@@ -25,7 +25,7 @@ export default function Hero() {
         </p>
 
         <div className="animate-fade-up flex flex-col sm:flex-row items-center justify-center gap-4 mb-20" style={{ animationDelay: "0.5s" }}>
-          <Link href="/signin" className="group px-8 py-4 rounded-2xl text-base font-semibold bg-accent hover:bg-accent-hover text-white transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98] flex items-center gap-2">
+          <Link href="#download" className="group px-8 py-4 rounded-2xl text-base font-semibold bg-accent hover:bg-accent-hover text-white transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98] flex items-center gap-2">
             Get Started Free <span className="inline-block animate-bounce-x">→</span>
           </Link>
           <a href="#features" className="px-8 py-4 rounded-2xl text-base font-semibold text-txt-dim hover:text-white glass hover:bg-white/5 transition-all duration-300">See Features</a>
