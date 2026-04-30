@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { createClient } from "@supabase/supabase-js"
 import { LogIn, LogOut, User, Key, Calendar, CheckCircle, XCircle, Copy, ExternalLink } from "lucide-react"
@@ -114,7 +113,7 @@ export default function Dashboard() {
         <div className="w-full max-w-sm mx-auto px-6">
           {/* Logo */}
           <div className="flex items-center justify-center gap-2.5 mb-8">
-            <Image src="/icon.png" alt="MacBroom" width={36} height={36} className="rounded-xl" />
+            <img src="/icon.png" alt="MacBroom" width={36} height={36} className="rounded-xl" />
             <span className="text-xl font-bold text-white">MacBroom</span>
           </div>
 

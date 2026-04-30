@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
-import Image from "next/image";
 import { Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff, Key } from "lucide-react";
 
 type Mode = "signin" | "signup" | "activate";
@@ -150,7 +149,7 @@ function SignInForm() {
         >
           {/* Logo */}
           <div className="flex items-center justify-center gap-2.5 mb-8">
-            <Image src="/icon.png" alt="MacBroom" width={36} height={36} className="rounded-xl" />
+            <img src="/icon.png" alt="MacBroom" width={36} height={36} className="rounded-xl" />
             <span className="text-xl font-bold text-white tracking-tight">
               Mac<span className="text-accent">Broom</span>
             </span>
