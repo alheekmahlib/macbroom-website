@@ -12,7 +12,8 @@
       <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
       <pubDate>Wed, 30 Apr 2026 21:15:00 +0000</pubDate>
       <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.1/MacBroom-1.0.1.zip"
-                 length="4237437"
+                 sparkle:edSignature="Eu+VBHN8SmUqs31RxCGNmNZZ0DicGGthX0i1sDW83N7TJ8doPTWldFaWE8eGnBT6Zx24meJvJJ9HA5uVX9a3AQ=="
+                 length="4237410"
                  type="application/octet-stream" />
       <description>
         <![CDATA[
