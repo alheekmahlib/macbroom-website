@@ -3,7 +3,7 @@
   <channel>
     <title>MacBroom Updates</title>
     <link>https://alheekmahlib.github.io/macbroom-website/appcast.xml</link>
-    <description>MacBroom — macOS Cleaner &amp; Optimizer</description>
+    <description>MacBroom — macOS Cleaner and Optimizer</description>
     <language>en</language>
     <item>
       <title>Version 1.0.0</title>
@@ -12,8 +12,7 @@
       <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
       <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
       <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.0/MacBroom-1.0.0.zip"
-                 sparkle:edSignature="INSERT_SIGNATURE_HERE"
-                 length="0"
+                 length="2882483"
                  type="application/octet-stream" />
       <description>
         <![CDATA[
@@ -23,8 +22,9 @@
           <li>📁 Large Files — Find and delete large files</li>
           <li>📊 Disk Analyzer — Visual disk usage with system skip</li>
           <li>⚡ Free Up RAM — Memory optimization with live monitoring</li>
-          <li>📦 App Uninstaller — Remove apps completely</li>
+          <li>🗑️ App Uninstaller — Remove apps completely</li>
           <li>📈 System Monitor — CPU, RAM, Network, Storage</li>
+          <li>📋 Menu Bar — Quick stats and actions</li>
         </ul>
         ]]>
       </description>
