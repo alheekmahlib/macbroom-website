@@ -28,7 +28,7 @@ export default function DownloadSection() {
 
           {/* Download button */}
           <a
-            href="https://github.com/alheekmahlib/macbroom/releases/latest"
+            href="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.0/MacBroom-1.0.0.dmg"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-accent hover:bg-accent-hover text-white font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98]"
           >
             <Download className="w-5 h-5" />
