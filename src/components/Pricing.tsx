@@ -54,7 +54,7 @@ export default function Pricing() {
     // Load Paddle.js dynamically
     if (typeof window !== "undefined" && !window.Paddle) {
       const script = document.createElement("script");
-      script.src = "https://sandbox-vendors.paddle.com/paddle.js";
+      script.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
       script.async = true;
       script.onload = function() {
         if (window.Paddle) {
