@@ -9,22 +9,26 @@ export default function ThankYouPage() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // Paddle passes transaction_id as URL parameter or in the hash
+    // 1. Try sessionStorage (set by paddle.checkout.completed event on pricing page)
+    const storedTxId = sessionStorage.getItem("paddle_transaction_id");
+    const storedOrderId = sessionStorage.getItem("paddle_order_id");
+
+    // 2. Try URL params
     const params = new URLSearchParams(window.location.search);
     const hash = window.location.hash;
 
-    // Try URL params first, then hash
     let txId = params.get("transaction_id")
       || params.get("checkout_id")
-      || params.get("order_id");
+      || params.get("order_id")
+      || storedTxId
+      || storedOrderId;
 
+    // 3. Try hash fragment
     if (!txId && hash) {
-      // Paddle sometimes puts data in hash as JSON
       try {
         const hashData = JSON.parse(decodeURIComponent(hash.substring(1)));
         txId = hashData.transaction_id || hashData.checkout_id || hashData.order_id;
       } catch {
-        // Try as query params in hash
         const hashParams = new URLSearchParams(hash.substring(1));
         txId = hashParams.get("transaction_id")
           || hashParams.get("checkout_id")
@@ -33,8 +37,11 @@ export default function ThankYouPage() {
     }
 
     if (txId) {
-  // eslint-disable-next-line react-hooks/set-state-in-effect
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTransactionId(txId);
+      // Clear so it's not shown again on revisit
+      sessionStorage.removeItem("paddle_transaction_id");
+      sessionStorage.removeItem("paddle_order_id");
     }
   }, []);
 
@@ -45,7 +52,6 @@ export default function ThankYouPage() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback
       const el = document.createElement("textarea");
       el.value = transactionId;
       document.body.appendChild(el);
@@ -125,10 +131,7 @@ export default function ThankYouPage() {
             <li className="flex items-start gap-3">
               <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent/20 text-accent text-xs font-bold shrink-0">1</span>
               <span className="text-sm text-txt-dim">
-                <Link
-                  href="/#download"
-                  className="text-accent hover:underline"
-                >
+                <Link href="/#download" className="text-accent hover:underline">
                   Download MacBroom
                 </Link>{" "}
                 if you haven&apos;t already

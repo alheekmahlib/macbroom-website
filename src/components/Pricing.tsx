@@ -71,6 +71,19 @@ export default function Pricing() {
         token: "test_2c8cba0f566485fd10488cd7730",
       });
     }
+
+    // Listen for Paddle checkout.completed event to capture transaction_id
+    const handlePaddleEvent = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail?.data?.transaction_id) {
+        sessionStorage.setItem("paddle_transaction_id", detail.data.transaction_id);
+      }
+      if (detail?.data?.order_id) {
+        sessionStorage.setItem("paddle_order_id", detail.data.order_id);
+      }
+    };
+    window.addEventListener("paddle.checkout.completed", handlePaddleEvent);
+    return () => window.removeEventListener("paddle.checkout.completed", handlePaddleEvent);
   }, []);
 
   const handleCheckout = () => {
