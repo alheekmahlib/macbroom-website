@@ -8,7 +8,9 @@ declare global {
     Paddle: {
       Environment: { set: (env: string) => void };
       Initialize: (options: { token: string }) => void;
-      Checkout: { open: (options: Record<string, unknown>) => void };
+      Checkout: {
+        open: (options: Record<string, unknown>) => void;
+      };
     };
   }
 }
@@ -19,15 +21,21 @@ type DeviceTier = 1 | 2;
 interface Plan {
   name: string; description: string; features: string[];
   prices: Record<DeviceTier, Record<BillingPeriod, { original: number; discounted: number | null }>>;
+  priceIds: Record<DeviceTier, Record<BillingPeriod, string>>;
   cta: string; highlighted: boolean; popular?: string;
 }
 
 const plans: Plan[] = [
   { name: "Free", description: "Basic cleaning for everyday use", features: ["System scan (view only)", "Health score monitoring", "Menu Bar stats (CPU, RAM, Network)", "Storage overview"],
     prices: { 1: { monthly: { original: 0, discounted: null }, yearly: { original: 0, discounted: null }, lifetime: { original: 0, discounted: null } }, 2: { monthly: { original: 0, discounted: null }, yearly: { original: 0, discounted: null }, lifetime: { original: 0, discounted: null } } },
+    priceIds: { 1: { monthly: "", yearly: "", lifetime: "" }, 2: { monthly: "", yearly: "", lifetime: "" } },
     cta: "Download Free", highlighted: false },
   { name: "Pro", description: "Full cleaning power, no limits", features: ["Everything in Free, plus:", "Smart Clean — remove junk files", "App Uninstaller — full removal", "Trash Manager", "Real-time System Monitor", "Priority support", "Lifetime updates"],
     prices: { 1: { monthly: { original: 4.99, discounted: null }, yearly: { original: 34.99, discounted: 24.99 }, lifetime: { original: 64.99, discounted: 44.99 } }, 2: { monthly: { original: 6.99, discounted: null }, yearly: { original: 59.99, discounted: 39.99 }, lifetime: { original: 84.99, discounted: 59.99 } } },
+    priceIds: {
+      1: { monthly: "pri_01kqh0drf99e6b54px0bexn9ac", yearly: "pri_01kqh0ds379rf0bwhfpm5khpyp", lifetime: "pri_01kqh0dsk3tmkzaqgnsghdbwcr" },
+      2: { monthly: "pri_01kqh0drp76rk3czdsm8yx6pq1", yearly: "pri_01kqh0dsc8h86j4gr988y8ne3k", lifetime: "pri_01kqh0dsswdf5fbpfnfm0f0acf" }
+    },
     cta: "Get Pro", highlighted: true, popular: "yearly" },
 ];
 
@@ -53,18 +61,17 @@ export default function Pricing() {
   }, []);
 
   const handleCheckout = () => {
+    const priceId = plans[1].priceIds[devices][billing];
+    if (!priceId) return;
     if (typeof window !== "undefined" && window.Paddle) {
       window.Paddle.Checkout.open({
-        items: [{ priceId: "pri_01kqgre9rdvsf6x659qqfegh2p", quantity: 1 }],
+        items: [{ priceId, quantity: 1 }],
         settings: {
           displayMode: "overlay",
           theme: "dark",
           successUrl: "https://alheekmahlib.github.io/macbroom-website?checkout=success",
         },
       });
-    } else {
-      // Fallback: open hosted checkout
-      window.open("https://sandbox-pay.paddle.io/hsc_01kqgtgmydc78z2xpzprbcpmmq_xkpvjdzdq0z0k12jbnjsdhfpntjga132?price_id=pri_01kqgre9rdvsf6x659qqfegh2p", "_blank");
     }
   };
 
