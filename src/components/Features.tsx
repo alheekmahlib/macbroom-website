@@ -1,10 +1,12 @@
 "use client";
 
-import { Sparkles, Trash2, Monitor, AppWindow, HardDrive, Shield } from "lucide-react";
+import { Sparkles, Trash2, Monitor, AppWindow, HardDrive, Shield, Zap, Disc } from "lucide-react";
 
 const features = [
   { icon: Sparkles, title: "Smart Clean", description: "One-click scan finds junk files, cache, logs, and temporary data across your entire system.", color: "#4073F2", screenshot: "/screenshots/smart-clean.png" },
-  { icon: AppWindow, title: "App Uninstaller", description: "Completely remove apps with all their associated files — cache, preferences, and support files.", color: "#10B981", screenshot: "/screenshots/app-uninstaller.png" },
+  { icon: Disc, title: "Disk Analyzer", description: "Visual breakdown of your disk usage. See exactly what's taking up space with an interactive map.", color: "#EF4444", screenshot: "/screenshots/disk-analyzer.png" },
+  { icon: Zap, title: "Free Up RAM", description: "Free up memory instantly with one click. Monitor RAM usage and optimize performance in real-time.", color: "#10B981", screenshot: "/screenshots/Free-Up-RAM.png" },
+  { icon: AppWindow, title: "App Uninstaller", description: "Completely remove apps with all their associated files — cache, preferences, and support files.", color: "#F59E0B", screenshot: "/screenshots/app-uninstaller.png" },
   { icon: Monitor, title: "System Monitor", description: "Real-time CPU, RAM, and network monitoring with beautiful charts and live Menu Bar stats.", color: "#8B5CF6", screenshot: "/screenshots/system-monitor.png" },
 ];
 
@@ -21,7 +23,7 @@ export default function Features() {
           {features.map((feature, i) => {
             const isReversed = i % 2 !== 0;
             return (
-              <div key={i} className={`animate-fade-up flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"} items-center gap-10 lg:gap-16`} style={{ animationDelay: `${i * 0.15}s` }}>
+              <div key={i} className={`animate-fade-up flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"} items-center gap-10 lg:gap-16`} style={{ animationDelay: `${i * 0.1}s` }}>
                 <div className="flex-1 max-w-lg">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: `${feature.color}12`, border: `1px solid ${feature.color}25` }}>
                     <feature.icon size={22} color={feature.color} />
