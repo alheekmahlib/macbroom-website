@@ -6,6 +6,27 @@
     <description>MacBroom — macOS Cleaner and Optimizer</description>
     <language>en</language>
     <item>
+      <title>Version 1.0.5</title>
+      <sparkle:version>6</sparkle:version>
+      <sparkle:shortVersionString>1.0.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Fri, 01 May 2026 22:40:00 +0000</pubDate>
+      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.5/MacBroom-1.0.5.zip"
+                 sparkle:edSignature="HCKZMzmrOnVoPHXolTWe2AYA7QYwHy1qfMMVi5C5DrrxZHA9vztByRQR8Qody683i2fqJJ7NKUw4QX4dhgV6BA=="
+                 length="4281878"
+                 type="application/octet-stream" />
+      <description>
+        <![CDATA[
+        <h2>MacBroom 1.0.5 — Sparkle Update Fix 🔄</h2>
+        <ul>
+          <li>🔧 Fixed auto-update: app now properly terminates for Sparkle to install updates</li>
+          <li>🐛 Fixed duplicate instances launching at startup</li>
+          <li>🛡️ Single instance enforcement</li>
+        </ul>
+        ]]>
+      </description>
+    </item>
+    <item>
       <title>Version 1.0.4</title>
       <sparkle:version>5</sparkle:version>
       <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
