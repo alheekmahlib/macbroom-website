@@ -51,8 +51,21 @@ export default function Pricing() {
   const [devices, setDevices] = useState<DeviceTier>(1);
 
   useEffect(() => {
-    // Initialize Paddle.js
-    if (typeof window !== "undefined" && window.Paddle) {
+    // Load Paddle.js dynamically
+    if (typeof window !== "undefined" && !window.Paddle) {
+      const script = document.createElement("script");
+      script.src = "https://sandbox-vendors.paddle.com/paddle.js";
+      script.async = true;
+      script.onload = function() {
+        if (window.Paddle) {
+          window.Paddle.Environment.set("sandbox");
+          window.Paddle.Initialize({
+            token: "test_2c8cba0f566485fd10488cd7730",
+          });
+        }
+      };
+      document.head.appendChild(script);
+    } else if (typeof window !== "undefined" && window.Paddle) {
       window.Paddle.Environment.set("sandbox");
       window.Paddle.Initialize({
         token: "test_2c8cba0f566485fd10488cd7730",
