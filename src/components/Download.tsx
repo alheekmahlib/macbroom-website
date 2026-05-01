@@ -1,8 +1,35 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Download, Apple, Monitor } from "lucide-react";
 
 export default function DownloadSection() {
+  const [downloadUrl, setDownloadUrl] = useState(
+    "https://github.com/alheekmahlib/macbroom/releases/latest"
+  );
+  const [version, setVersion] = useState("latest");
+
+  useEffect(() => {
+    // Fetch latest release DMG URL from GitHub API
+    fetch("https://api.github.com/repos/alheekmahlib/macbroom/releases/latest")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.tag_name) {
+          setVersion(data.tag_name.replace("v", ""));
+        }
+        // Find the DMG asset
+        const dmg = data.assets?.find((a: { name: string }) =>
+          a.name.endsWith(".dmg")
+        );
+        if (dmg?.browser_download_url) {
+          setDownloadUrl(dmg.browser_download_url);
+        }
+      })
+      .catch(() => {
+        // Fallback to releases page
+      });
+  }, []);
+
   return (
     <section id="download" className="py-24 lg:py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.03] to-transparent pointer-events-none" />
@@ -24,11 +51,11 @@ export default function DownloadSection() {
           </div>
 
           <h3 className="text-2xl font-bold text-white mb-2">MacBroom</h3>
-          <p className="text-txt-dim text-sm mb-6">Version 1.0.3 · macOS 13+ · Universal Binary</p>
+          <p className="text-txt-dim text-sm mb-6">Version {version} · macOS 13+ · Universal Binary</p>
 
           {/* Download button */}
           <a
-            href="https://github.com/alheekmahlib/macbroom/releases/latest"
+            href={downloadUrl}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-accent hover:bg-accent-hover text-white font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98]"
           >
             <Download className="w-5 h-5" />
