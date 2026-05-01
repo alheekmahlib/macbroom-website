@@ -6,6 +6,29 @@
     <description>MacBroom — macOS Cleaner and Optimizer</description>
     <language>en</language>
     <item>
+      <title>Version 1.0.3</title>
+      <sparkle:version>4</sparkle:version>
+      <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Fri, 01 May 2026 00:50:00 +0000</pubDate>
+      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.3/MacBroom-1.0.3.zip"
+                 sparkle:edSignature="l/VS/yOU/Ntc89OxHnLWpsLKSrDjk6OyK7ed81t7yAT9pjckbgYBWEo6EXPLxbDHfoYz/eUUpoUMO0nhinTxCg=="
+                 length="4242446"
+                 type="application/octet-stream" />
+      <description>
+        <![CDATA[
+        <h2>MacBroom 1.0.3 — Menu Bar Persistence &amp; Fixes 🔧</h2>
+        <ul>
+          <li>👁️ Menu bar stays active after ⌘Q (hides to menu bar)</li>
+          <li>🚫 No more duplicate windows when reopening</li>
+          <li>🔄 Launch at Login — starts with macOS</li>
+          <li>⏻ Quit button in menu bar for full exit</li>
+          <li>✅ Fixed "Apple could not verify" — properly notarized</li>
+        </ul>
+        ]]>
+      </description>
+    </item>
+    <item>
       <title>Version 1.0.2</title>
       <sparkle:version>3</sparkle:version>
       <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
@@ -17,36 +40,11 @@
                  type="application/octet-stream" />
       <description>
         <![CDATA[
-        <h2>MacBroom 1.0.2 — Notarization &amp; Menu Bar Fix 🔧</h2>
+        <h2>MacBroom 1.0.2</h2>
         <ul>
-          <li>✅ Fixed "Apple could not verify" — properly notarized app bundle</li>
-          <li>👁️ Menu bar stays active after closing window (⌘Q hides to menu bar)</li>
-          <li>🔄 Launch at Login — starts automatically with macOS</li>
-          <li>🚫 No more duplicate instances when reopening</li>
-          <li>⏻ Quit button in menu bar for full exit</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.1</title>
-      <sparkle:version>2</sparkle:version>
-      <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Wed, 30 Apr 2026 22:30:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.1/MacBroom-1.0.1.zip"
-                 sparkle:edSignature="p2MiKCcpKu4WwcdeqsNHztwjz1jE3O5W6tJ+k2+/5B9HqA+o19FXHZe27uTg6ac2NSZXEijnCzkkH+S3HxojBA=="
-                 length="4238524"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.1 — Performance Update 🚀</h2>
-        <ul>
-          <li>🚀 Native macOS APIs — 10x faster system monitoring</li>
-          <li>🔧 Storage now matches About This Mac (decimal GB)</li>
-          <li>🗑️ New scan targets: Mail Downloads, system logs, browser caches</li>
-          <li>📊 Accurate disk size calculation (physical usage)</li>
-          <li>🛡️ Improved safety rules for browser data</li>
+          <li>✅ Fixed notarization — no more "Apple could not verify"</li>
+          <li>👁️ Menu bar persists after closing window</li>
+          <li>🔄 Launch at Login</li>
         </ul>
         ]]>
       </description>
@@ -64,13 +62,13 @@
         <![CDATA[
         <h2>MacBroom 1.0.0 — First Release! 🎉</h2>
         <ul>
-          <li>🧹 Smart Clean — Clean cache, logs, trash, and more</li>
-          <li>📁 Large Files — Find and delete large files</li>
-          <li>📊 Disk Analyzer — Visual disk usage with system skip</li>
-          <li>⚡ Free Up RAM — Memory optimization with live monitoring</li>
-          <li>🗑️ App Uninstaller — Remove apps completely</li>
-          <li>📈 System Monitor — CPU, RAM, Network, Storage</li>
-          <li>📋 Menu Bar — Quick stats and actions</li>
+          <li>🧹 Smart Clean</li>
+          <li>📁 Large Files</li>
+          <li>📊 Disk Analyzer</li>
+          <li>⚡ Free Up RAM</li>
+          <li>🗑️ App Uninstaller</li>
+          <li>📈 System Monitor</li>
+          <li>📋 Menu Bar</li>
         </ul>
         ]]>
       </description>
