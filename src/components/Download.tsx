@@ -47,7 +47,7 @@ export default function DownloadSection() {
         <div className="animate-fade-up glass-card rounded-3xl p-8 lg:p-12 glow-accent" style={{ animationDelay: "0.15s" }}>
           {/* App icon */}
           <div className="w-20 h-20 rounded-2xl mx-auto mb-6 overflow-hidden">
-            <img src="/icon.png" alt="MacBroom" className="w-full h-full" />
+            <img src="/macbroom-website/icon.png" alt="MacBroom" className="w-full h-full" />
           </div>
 
           <h3 className="text-2xl font-bold text-white mb-2">MacBroom</h3>

@@ -3,11 +3,11 @@
 import { Sparkles, Trash2, Monitor, AppWindow, HardDrive, Shield, Zap, Disc } from "lucide-react";
 
 const features = [
-  { icon: Sparkles, title: "Smart Clean", description: "One-click scan finds junk files, cache, logs, and temporary data across your entire system.", color: "#4073F2", screenshot: "/screenshots/smart-clean.png" },
-  { icon: Disc, title: "Disk Analyzer", description: "Visual breakdown of your disk usage. See exactly what's taking up space with an interactive map.", color: "#EF4444", screenshot: "/screenshots/disk-analyzer.png" },
-  { icon: Zap, title: "Free Up RAM", description: "Free up memory instantly with one click. Monitor RAM usage and optimize performance in real-time.", color: "#10B981", screenshot: "/screenshots/Free-Up-RAM.png" },
-  { icon: AppWindow, title: "App Uninstaller", description: "Completely remove apps with all their associated files — cache, preferences, and support files.", color: "#F59E0B", screenshot: "/screenshots/app-uninstaller.png" },
-  { icon: Monitor, title: "System Monitor", description: "Real-time CPU, RAM, and network monitoring with beautiful charts and live Menu Bar stats.", color: "#8B5CF6", screenshot: "/screenshots/system-monitor.png" },
+  { icon: Sparkles, title: "Smart Clean", description: "One-click scan finds junk files, cache, logs, and temporary data across your entire system.", color: "#4073F2", screenshot: "/macbroom-website/screenshots/smart-clean.png" },
+  { icon: Disc, title: "Disk Analyzer", description: "Visual breakdown of your disk usage. See exactly what's taking up space with an interactive map.", color: "#EF4444", screenshot: "/macbroom-website/screenshots/disk-analyzer.png" },
+  { icon: Zap, title: "Free Up RAM", description: "Free up memory instantly with one click. Monitor RAM usage and optimize performance in real-time.", color: "#10B981", screenshot: "/macbroom-website/screenshots/Free-Up-RAM.png" },
+  { icon: AppWindow, title: "App Uninstaller", description: "Completely remove apps with all their associated files — cache, preferences, and support files.", color: "#F59E0B", screenshot: "/macbroom-website/screenshots/app-uninstaller.png" },
+  { icon: Monitor, title: "System Monitor", description: "Real-time CPU, RAM, and network monitoring with beautiful charts and live Menu Bar stats.", color: "#8B5CF6", screenshot: "/macbroom-website/screenshots/system-monitor.png" },
 ];
 
 export default function Features() {
@@ -47,7 +47,7 @@ export default function Features() {
               <p className="text-txt-dim max-w-lg mx-auto">Built with Swift and SwiftUI for the best performance and smallest footprint. Pure native code.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="glass-card rounded-xl p-2"><img src="/screenshots/system-monitor2.png" alt="System Monitor Menu Bar" className="w-full rounded-lg" /></div>
+              <div className="glass-card rounded-xl p-2"><img src="/macbroom-website/screenshots/system-monitor2.png" alt="System Monitor Menu Bar" className="w-full rounded-lg" /></div>
               <div className="flex items-center justify-center gap-6">
                 {[
                   { icon: HardDrive, label: "Storage Analyzer", color: "#EF4444" },

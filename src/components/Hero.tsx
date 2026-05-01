@@ -41,7 +41,7 @@ export default function Hero() {
               </div>
               <div className="flex-1 text-center text-xs text-txt-dim">MacBroom</div>
             </div>
-            <img src="/screenshots/home.png" alt="MacBroom Home Screen" className="w-full rounded-b-xl" />
+            <img src="/macbroom-website/screenshots/home.png" alt="MacBroom Home Screen" className="w-full rounded-b-xl" />
           </div>
         </div>
 
