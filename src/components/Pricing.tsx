@@ -1,7 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Check, Zap } from "lucide-react";
+
+declare global {
+  interface Window {
+    Paddle: {
+      Environment: { set: (env: string) => void };
+      Initialize: (options: { token: string }) => void;
+      Checkout: { open: (options: Record<string, unknown>) => void };
+    };
+  }
+}
 
 type BillingPeriod = "monthly" | "yearly" | "lifetime";
 type DeviceTier = 1 | 2;
@@ -31,6 +41,32 @@ function getPriceDisplay(price: { original: number; discounted: number | null },
 export default function Pricing() {
   const [billing, setBilling] = useState<BillingPeriod>("yearly");
   const [devices, setDevices] = useState<DeviceTier>(1);
+
+  useEffect(() => {
+    // Initialize Paddle.js
+    if (typeof window !== "undefined" && window.Paddle) {
+      window.Paddle.Environment.set("sandbox");
+      window.Paddle.Initialize({
+        token: "test_2c8cba0f566485fd10488cd7730",
+      });
+    }
+  }, []);
+
+  const handleCheckout = () => {
+    if (typeof window !== "undefined" && window.Paddle) {
+      window.Paddle.Checkout.open({
+        items: [{ priceId: "pri_01kqgre9rdvsf6x659qqfegh2p", quantity: 1 }],
+        settings: {
+          displayMode: "overlay",
+          theme: "dark",
+          successUrl: "https://alheekmahlib.github.io/macbroom-website?checkout=success",
+        },
+      });
+    } else {
+      // Fallback: open hosted checkout
+      window.open("https://sandbox-pay.paddle.io/hsc_01kqgtgmydc78z2xpzprbcpmmq_xkpvjdzdq0z0k12jbnjsdhfpntjga132?price_id=pri_01kqgre9rdvsf6x659qqfegh2p", "_blank");
+    }
+  };
 
   return (
     <section id="pricing" className="py-24 lg:py-32 relative">
@@ -85,7 +121,7 @@ export default function Pricing() {
                   ))}
                   {plan.highlighted && <li className="flex items-start gap-3"><Check size={16} className="text-accent mt-0.5 shrink-0" /><span className="text-sm text-txt-dim font-medium">{devices === 1 ? "1 device" : "2 devices"}</span></li>}
                 </ul>
-                <a href="#download" className={`block text-center text-sm font-semibold py-3 rounded-xl transition-all duration-200 ${plan.highlighted ? "bg-accent hover:bg-accent-hover text-white hover:shadow-lg hover:shadow-accent/25" : "border border-white/10 text-txt-dim hover:text-white hover:border-white/20"}`}>{plan.cta}</a>
+                <button onClick={plan.highlighted ? handleCheckout : undefined} className={`block w-full text-center text-sm font-semibold py-3 rounded-xl transition-all duration-200 ${plan.highlighted ? "bg-accent hover:bg-accent-hover text-white hover:shadow-lg hover:shadow-accent/25 cursor-pointer" : "border border-white/10 text-txt-dim hover:text-white hover:border-white/20"}`}>{plan.cta}</button>
               </div>
             );
           })}
