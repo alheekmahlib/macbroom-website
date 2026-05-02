@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Clean, optimize, and speed up your Mac. Remove junk files, manage apps, and monitor system performance.",
   icons: {
-    icon: "/macbroom-website/icon.png",
+    icon: "/icon.png",
   },
 };
 

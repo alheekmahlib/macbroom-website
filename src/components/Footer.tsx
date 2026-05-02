@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <img src="/macbroom-website/icon.png" alt="MacBroom" width={28} height={28} className="rounded-lg" />
+              <img src="/icon.png" alt="MacBroom" width={28} height={28} className="rounded-lg" />
               <span className="text-lg font-bold text-white">
                 Mac<span className="text-accent">Broom</span>
               </span>

@@ -95,7 +95,7 @@ export default function Pricing() {
         settings: {
           displayMode: "overlay",
           theme: "dark",
-          successUrl: "https://alheekmahlib.github.io/macbroom-website/thank-you?checkout=success",
+          successUrl: "https://alheekmahlib.github.io/thank-you?checkout=success",
         },
       });
     }

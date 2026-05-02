@@ -43,7 +43,7 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass shadow-lg shadow-black/10" : "bg-transparent"}`}>
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <img src="/macbroom-website/icon.png" alt="MacBroom" width={32} height={32} className="rounded-lg" />
+            <img src="/icon.png" alt="MacBroom" width={32} height={32} className="rounded-lg" />
             <span className="text-xl font-bold text-white tracking-tight">Mac<span className="text-accent">Broom</span></span>
           </Link>
           <div className="hidden md:flex items-center gap-1">

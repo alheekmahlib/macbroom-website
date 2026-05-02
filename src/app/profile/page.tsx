@@ -113,7 +113,7 @@ export default function Dashboard() {
         <div className="w-full max-w-sm mx-auto px-6">
           {/* Logo */}
           <div className="flex items-center justify-center gap-2.5 mb-8">
-            <img src="/macbroom-website/icon.png" alt="MacBroom" width={36} height={36} className="rounded-xl" />
+            <img src="/icon.png" alt="MacBroom" width={36} height={36} className="rounded-xl" />
             <span className="text-xl font-bold text-white">MacBroom</span>
           </div>
 

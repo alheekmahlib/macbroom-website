@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/rss-modules/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>MacBroom Updates</title>
-    <link>https://alheekmahlib.github.io/macbroom-website/appcast.xml</link>
+    <link>https://macbroom.com/appcast.xml</link>
     <description>MacBroom — macOS Cleaner and Optimizer</description>
     <language>en</language>
     <item>
