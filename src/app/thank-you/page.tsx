@@ -9,21 +9,16 @@ export default function ThankYouPage() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // 1. Try sessionStorage (set by paddle.checkout.completed event on pricing page)
-    const storedTxId = sessionStorage.getItem("paddle_transaction_id");
-    const storedOrderId = sessionStorage.getItem("paddle_order_id");
-
-    // 2. Try URL params
+    // 1. Try URL params (Paddle can pass transaction_id, _ptxn, or checkout_id)
     const params = new URLSearchParams(window.location.search);
     const hash = window.location.hash;
 
     let txId = params.get("transaction_id")
+      || params.get("_ptxn")
       || params.get("checkout_id")
-      || params.get("order_id")
-      || storedTxId
-      || storedOrderId;
+      || params.get("order_id");
 
-    // 3. Try hash fragment
+    // 2. Try hash fragment
     if (!txId && hash) {
       try {
         const hashData = JSON.parse(decodeURIComponent(hash.substring(1)));
@@ -31,9 +26,16 @@ export default function ThankYouPage() {
       } catch {
         const hashParams = new URLSearchParams(hash.substring(1));
         txId = hashParams.get("transaction_id")
+          || hashParams.get("_ptxn")
           || hashParams.get("checkout_id")
           || hashParams.get("order_id");
       }
+    }
+
+    // 3. Try sessionStorage (set by paddle.checkout.completed event on pricing page)
+    if (!txId) {
+      txId = sessionStorage.getItem("paddle_transaction_id")
+        || sessionStorage.getItem("paddle_order_id");
     }
 
     if (txId) {
