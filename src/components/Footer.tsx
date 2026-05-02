@@ -47,6 +47,11 @@ export default function Footer() {
                   <a href="#" className="text-sm text-txt-dim hover:text-white transition-colors">{t}</a>
                 </li>
               ))}
+              <li>
+                <Link href="/contact" className="text-sm text-txt-dim hover:text-white transition-colors">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
