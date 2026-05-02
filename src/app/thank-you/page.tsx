@@ -86,7 +86,7 @@ export default function ThankYouPage() {
         {/* Transaction ID */}
         {transactionId ? (
           <div className="animate-fade-up bg-white/5 border border-white/10 rounded-2xl p-6 mb-6" style={{ animationDelay: "0.2s" }}>
-            <p className="text-sm text-txt-dim mb-3">Your License Key (Transaction ID):</p>
+            <p className="text-sm text-txt-dim mb-3">Your Transaction ID (starts with txn_):</p>
             <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4 border border-white/5">
               <code className="text-accent font-mono text-sm sm:text-base flex-1 text-left break-all">
                 {transactionId}
@@ -107,10 +107,10 @@ export default function ThankYouPage() {
         ) : (
           <div className="animate-fade-up bg-white/5 border border-white/10 rounded-2xl p-6 mb-6" style={{ animationDelay: "0.2s" }}>
             <p className="text-sm text-txt-dim mb-2">
-              Your license key has been sent to your email.
+              Your Transaction ID has been sent to your email.
             </p>
             <p className="text-sm text-txt-dim">
-              You can also find it in your{" "}
+              It starts with <code className="text-accent">txn_</code> — you can also find it in your{" "}
               <a
                 href="https://sandbox-vendors.paddle.com/checkout"
                 target="_blank"
@@ -144,7 +144,7 @@ export default function ThankYouPage() {
             <li className="flex items-start gap-3">
               <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent/20 text-accent text-xs font-bold shrink-0">3</span>
               <span className="text-sm text-txt-dim">
-                Paste your license key and click <strong className="text-white">Activate</strong>
+                Paste your Transaction ID and click <strong className="text-white">Activate</strong>
               </span>
             </li>
           </ol>
