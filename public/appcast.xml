@@ -6,6 +6,29 @@
     <description>MacBroom — macOS Cleaner and Optimizer</description>
     <language>en</language>
     <item>
+      <title>Version 1.1.0</title>
+      <sparkle:version>11</sparkle:version>
+      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Thu, 21 May 2026 03:15:00 +0000</pubDate>
+      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.1.0/MacBroom-1.1.0.zip"
+                 sparkle:edSignature="85ax3pNvCzJt+6/tGO+zAoKzXVthuoH1KIJ0t4aB9Z9V3wzbsOn2r+JgAFVFB3a+69UroP/Jlw8JuNWq5PuyAA=="
+                 length="9322264"
+                 type="application/octet-stream" />
+      <description>
+        <![CDATA[
+        <h2>MacBroom 1.1.0</h2>
+        <ul>
+          <li>🧹 Smart Clean: Cancel, iOS Backups, Large Files, Old Downloads</li>
+          <li>💾 RAM: Matches Activity Monitor, fixed memory calculation</li>
+          <li>📋 Menu Bar: Storage GB free, CPU temp for Apple Silicon</li>
+          <li>🔒 Lemon Squeezy integration</li>
+          <li>🐛 Bug fixes and performance improvements</li>
+        </ul>
+        ]]>
+      </description>
+    </item>
+    <item>
       <title>Version 1.0.9</title>
       <sparkle:version>10</sparkle:version>
       <sparkle:shortVersionString>1.0.9</sparkle:shortVersionString>
@@ -83,118 +106,6 @@
         <h2>MacBroom 1.0.6</h2>
         <ul>
           <li>🔧 Sparkle auto-update now works correctly</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.5</title>
-      <sparkle:version>6</sparkle:version>
-      <sparkle:shortVersionString>1.0.5</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Fri, 01 May 2026 22:40:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.5/MacBroom-1.0.5.zip"
-                 sparkle:edSignature="drQ3k4chyunG87GE2AGI2oCZz2oTNgs4NSYZOThmxxaAcKg+ui9ONwn1eVWF3r1p+YXhywVq5c4P6lwJSBc+Ag=="
-                 length="4281557"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.5 — Sparkle Update Fix 🔄</h2>
-        <ul>
-          <li>🔧 Fixed auto-update: app now properly terminates for Sparkle to install updates</li>
-          <li>🐛 Fixed duplicate instances launching at startup</li>
-          <li>🛡️ Single instance enforcement</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.4</title>
-      <sparkle:version>5</sparkle:version>
-      <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Fri, 01 May 2026 19:07:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.4/MacBroom-1.0.4.zip"
-                 sparkle:edSignature="NdiLT0YeiFrrDcITbuUILJY2FDS4N8aLaHeK08nMHGgKDrub0mIjVbKaAD9zKUptFOyyBMBGHOxTXnBxxnmDBw=="
-                 length="4349813"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.4 — Stability &amp; Fixes 🔧</h2>
-        <ul>
-          <li>🐛 Fixed duplicate instances launching at startup</li>
-          <li>🐛 Fixed Sparkle framework loading error</li>
-          <li>🐛 Fixed MenuBarIcon showing wrong icon</li>
-          <li>🔒 Login Item only registers from /Applications</li>
-          <li>🛡️ Single instance enforcement — no more duplicate processes</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.3</title>
-      <sparkle:version>4</sparkle:version>
-      <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Fri, 01 May 2026 00:50:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.3/MacBroom-1.0.3.zip"
-                 sparkle:edSignature="l/VS/yOU/Ntc89OxHnLWpsLKSrDjk6OyK7ed81t7yAT9pjckbgYBWEo6EXPLxbDHfoYz/eUUpoUMO0nhinTxCg=="
-                 length="4242446"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.3 — Menu Bar Persistence &amp; Fixes 🔧</h2>
-        <ul>
-          <li>👁️ Menu bar stays active after ⌘Q (hides to menu bar)</li>
-          <li>🚫 No more duplicate windows when reopening</li>
-          <li>🔄 Launch at Login — starts with macOS</li>
-          <li>⏻ Quit button in menu bar for full exit</li>
-          <li>✅ Fixed "Apple could not verify" — properly notarized</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.2</title>
-      <sparkle:version>3</sparkle:version>
-      <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Thu, 30 Apr 2026 23:45:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.2/MacBroom-1.0.2.zip"
-                 sparkle:edSignature="RHQKilU/5yzA7/4TiZKIjFcaJ4bNy1nyXKxWxqpeijcVThfsapik09Y+Q5f+4sESxEMeDttc87a9m8y6o78GDQ=="
-                 length="4240739"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.2</h2>
-        <ul>
-          <li>✅ Fixed notarization — no more "Apple could not verify"</li>
-          <li>👁️ Menu bar persists after closing window</li>
-          <li>🔄 Launch at Login</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.0</title>
-      <sparkle:version>1</sparkle:version>
-      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.0/MacBroom-1.0.0.zip"
-                 length="2882483"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.0 — First Release! 🎉</h2>
-        <ul>
-          <li>🧹 Smart Clean</li>
-          <li>📁 Large Files</li>
-          <li>📊 Disk Analyzer</li>
-          <li>⚡ Free Up RAM</li>
-          <li>🗑️ App Uninstaller</li>
-          <li>📈 System Monitor</li>
-          <li>📋 Menu Bar</li>
         </ul>
         ]]>
       </description>
