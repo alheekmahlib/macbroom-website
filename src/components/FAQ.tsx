@@ -5,8 +5,8 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   { q: "Is MacBroom safe to use?", a: "Absolutely. MacBroom uses a three-level safety system: safe, caution, and unsafe. Protected system files are never touched. All deletions go to Trash first." },
-  { q: "How is MacBroom different from CleanMyMac?", a: "MacBroom is built with native Swift and SwiftUI — no Electron, no web wrapper. It's faster, lighter, and has no subscriptions. Pay once, use forever." },
-  { q: "What does the license include?", a: "The Pro license includes lifetime access to all features, lifetime updates, and priority support. One license per device." },
+  { q: "How is MacBroom different from CleanMyMac?", a: "MacBroom is built with native Swift and SwiftUI — no Electron, no web wrapper. It's faster and lighter. Choose from monthly, yearly, or lifetime plans." },
+  { q: "What does the license include?", a: "The Pro license includes access to all features and updates. Available as monthly, yearly, or lifetime plans. One license per device." },
   { q: "Can I transfer my license to another Mac?", a: "Yes! Contact support with your license key and we'll deactivate it from the old device so you can use it on a new one." },
   { q: "Does it work on Apple Silicon (M1/M2/M3/M4)?", a: "Yes, MacBroom is built as a universal binary and works natively on both Apple Silicon and Intel Macs running macOS 13 or later." },
   { q: "Is there a free trial?", a: "The free version includes system scanning and monitoring. You can see what needs cleaning before deciding to purchase Pro." },
