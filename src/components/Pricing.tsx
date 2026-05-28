@@ -90,14 +90,14 @@ const plans: Plan[] = [
     },
     checkoutUrls: {
       1: {
-        monthly: "https://YOURSTORE.lemonsqueezy.com/checkout/buy/...",
-        yearly: "https://YOURSTORE.lemonsqueezy.com/checkout/buy/...",
-        lifetime: "https://YOURSTORE.lemonsqueezy.com/checkout/buy/...",
+        monthly: "https://alheekmahlib.lemonsqueezy.com/checkout/buy/00ad7def-b61a-425f-afd7-5d8369e4a948?enabled=1718080",
+        yearly: "https://alheekmahlib.lemonsqueezy.com/checkout/buy/cf8fc45f-15f2-4731-9aa6-88f69ef742c7?enabled=1718062",
+        lifetime: "https://alheekmahlib.lemonsqueezy.com/checkout/buy/df542fb3-fe62-41fc-90c4-15302315176c?enabled=1718031",
       },
       2: {
-        monthly: "https://YOURSTORE.lemonsqueezy.com/checkout/buy/...",
-        yearly: "https://YOURSTORE.lemonsqueezy.com/checkout/buy/...",
-        lifetime: "https://YOURSTORE.lemonsqueezy.com/checkout/buy/...",
+        monthly: "https://alheekmahlib.lemonsqueezy.com/checkout/buy/0a30c8a9-10f4-43c4-abe4-ac2aa141e564?enabled=1718083",
+        yearly: "https://alheekmahlib.lemonsqueezy.com/checkout/buy/147cafad-ecdb-4424-a71d-25263a347649?enabled=1718066",
+        lifetime: "https://alheekmahlib.lemonsqueezy.com/checkout/buy/deb0cd76-22c9-4499-98db-a243cfa89a3a?enabled=1718041",
       },
     },
     cta: "Get Pro",
