@@ -1,0 +1,7 @@
+# Cloudflare Pages configuration.
+# Pins the project so `wrangler pages deploy` knows where to push without us
+# having to pass --project-name / a directory on every invocation.
+
+name = "macbroom-website"
+pages_build_output_dir = "out"
+compatibility_date = "2026-07-05"
