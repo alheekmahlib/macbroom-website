@@ -2,12 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { createClient } from "@supabase/supabase-js"
+import { supabase, AUTH_REDIRECT_URL } from "@/lib/supabase"
 import { LogIn, LogOut, User, Key, Calendar, CheckCircle, XCircle, Copy, ExternalLink } from "lucide-react"
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder'
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 interface License {
   license_key: string
@@ -72,22 +68,35 @@ export default function Dashboard() {
     setLoading(true)
     setError("")
 
-    const { data, error: authError } = await supabase.auth.signUp({ email, password })
+    const { data, error: authError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: AUTH_REDIRECT_URL,
+      },
+    })
     if (authError) {
-      setError(authError.message.includes("registered") ? "Email already registered. Try signing in." : authError.message)
+      setError(authError.message)
       setLoading(false)
       return
     }
 
-    if (data.user) {
-      setError("")
-      // Check if email confirmation required
-      if (data.session) {
-        setUser({ email: data.user.email ?? "", id: data.user.id })
-        fetchLicenses(data.user.id)
-      } else {
-        setError("Check your email to confirm your account.")
-      }
+    // Supabase returns success (not an error) for an already-registered email;
+    // the tell-tale sign is an empty `identities` array.
+    if (!data.user || (data.user.identities ?? []).length === 0) {
+      setError("Email already registered. Try signing in.")
+      setLoading(false)
+      return
+    }
+
+    setError("")
+    // Email confirmation not required — user is signed in right away.
+    if (data.session) {
+      setUser({ email: data.user.email ?? "", id: data.user.id })
+      fetchLicenses(data.user.id)
+    } else {
+      setError(`We've sent a verification link to ${email}. Check your email to confirm your account.`)
+      setPassword("")
     }
     setLoading(false)
   }
