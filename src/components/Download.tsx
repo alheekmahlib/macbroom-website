@@ -1,34 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Download, Apple, Monitor } from "lucide-react";
 
-export default function DownloadSection() {
-  const [downloadUrl, setDownloadUrl] = useState(
-    "https://github.com/alheekmahlib/macbroom/releases/latest"
-  );
-  const [version, setVersion] = useState("latest");
+// Static download URL hosted on Cloudflare R2. Always points at the latest
+// build, so the site never needs to call the GitHub API at request time.
+const DOWNLOAD_URL = "https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/MacBroom-latest.zip";
 
-  useEffect(() => {
-    // Fetch latest release DMG URL from GitHub API
-    fetch("https://api.github.com/repos/alheekmahlib/macbroom/releases/latest")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.tag_name) {
-          setVersion(data.tag_name.replace("v", ""));
-        }
-        // Find the DMG asset
-        const dmg = data.assets?.find((a: { name: string }) =>
-          a.name.endsWith(".dmg")
-        );
-        if (dmg?.browser_download_url) {
-          setDownloadUrl(dmg.browser_download_url);
-        }
-      })
-      .catch(() => {
-        // Fallback to releases page
-      });
-  }, []);
+export default function DownloadSection() {
+  const downloadUrl = DOWNLOAD_URL;
+  const version = "1.3.0";
 
   return (
     <section id="download" className="py-24 lg:py-32 relative">
