@@ -1,14 +1,44 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Download, Apple, Monitor } from "lucide-react";
 
 // Static download URL hosted on Cloudflare R2. Always points at the latest
 // build, so the site never needs to call the GitHub API at request time.
 const DOWNLOAD_URL = "https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/MacBroom-latest.zip";
 
+// Sparkle appcast feed. The latest <item> holds the most recent version; we
+// read it at runtime so the site never shows a stale version number.
+const APPCAST_URL = "https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/appcast.xml";
+
 export default function DownloadSection() {
   const downloadUrl = DOWNLOAD_URL;
-  const version = "1.3.0";
+  // Fallback shown until the appcast resolves; also used if parsing fails.
+  const [version, setVersion] = useState("1.3.0");
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(APPCAST_URL)
+      .then((res) => res.text())
+      .then((xml) => {
+        if (cancelled) return;
+        // The first <item> in the feed is the newest release.
+        const doc = new DOMParser().parseFromString(xml, "application/xml");
+        const latest = doc.querySelector("item");
+        const v =
+          latest?.getElementsByTagName("sparkle:shortVersionString")[0]?.textContent ||
+          latest?.querySelector("title")?.textContent?.replace(/^Version\s+/i, "") ||
+          null;
+        if (v) setVersion(v);
+      })
+      .catch(() => {
+        // Network/CORS failure — keep the fallback version. Static R2 serves
+        // the file with permissive CORS, so this should rarely trigger.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <section id="download" className="py-24 lg:py-32 relative">
