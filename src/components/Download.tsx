@@ -8,8 +8,10 @@ import { Download, Apple, Monitor } from "lucide-react";
 const DOWNLOAD_URL = "https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/MacBroom-latest.zip";
 
 // Sparkle appcast feed. The latest <item> holds the most recent version; we
-// read it at runtime so the site never shows a stale version number.
-const APPCAST_URL = "https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/appcast.xml";
+// read it at runtime so the site never shows a stale version number. Served
+// from the same origin as the site (/appcast.xml) to avoid CORS issues — R2
+// does not send Access-Control-Allow-Origin headers.
+const APPCAST_URL = "/appcast.xml";
 
 export default function DownloadSection() {
   const downloadUrl = DOWNLOAD_URL;

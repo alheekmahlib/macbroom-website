@@ -1,154 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/rss-modules/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
   <channel>
-    <title>MacBroom Updates</title>
-    <link>https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/appcast.xml</link>
+    <title>MacBroom</title>
+    <link>https://macbroom.com/appcast.xml</link>
     <description>MacBroom — macOS Cleaner and Optimizer</description>
     <language>en</language>
     <item>
-      <title>Version 1.3.0</title>
-      <sparkle:version>19</sparkle:version>
-      <sparkle:shortVersionString>1.3.0</sparkle:shortVersionString>
+      <title>MacBroom 1.3.1</title>
+      <pubDate>Wed, 08 Jul 2026 21:41:37 +0000</pubDate>
+      <sparkle:version>20</sparkle:version>
+      <sparkle:shortVersionString>1.3.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Sun, 05 Jul 2026 23:00:00 +0000</pubDate>
-      <enclosure url="https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/MacBroom-1.3.0.zip"
-                 sparkle:edSignature="REPLACE_WITH_EDDSA_SIGNATURE"
-                 length="0"
-                 type="application/octet-stream" />
+      <enclosure
+        url="https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/MacBroom-1.3.1.zip"
+        sparkle:edSignature="VMqt3dRlDFuqYYOVJpZxpkjS1KJv4McmBTJ7uUOdJvEk6f0R6rcpLqcISfaEzJ94IIjPyAJMMPvxZLoCzQxfBQ=="
+        length="4178082"
+        type="application/octet-stream" />
       <description>
         <![CDATA[
-        <h2>MacBroom 1.3.0</h2>
+        <h2>MacBroom 1.3.1</h2>
         <ul>
-          <li>📦 Distribution moved to Cloudflare R2</li>
           <li>🐛 Bug fixes and performance improvements</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.2.0</title>
-      <sparkle:version>18</sparkle:version>
-      <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Thu, 28 May 2026 23:08:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.2.0/MacBroom-1.2.0.zip"
-                 sparkle:edSignature="Qx02xA+0hdwWVMzSIUXp30N84z4yL1sK7FplkBO7gBDnLDYeBBvPRcfZLhUExWnOKcZJY1wbwcRXbZaxR+aLBA=="
-                 length="7166246"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.2.0</h2>
-        <ul>
-          <li>💳 Switched to Lemon Squeezy for payments</li>
-          <li>💰 Monthly, Yearly, and Lifetime plans available</li>
-          <li>🔑 License key activation for Pro features</li>
-          <li>🗑️ Removed Paddle SDK</li>
-          <li>🐛 Bug fixes and performance improvements</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.1.0</title>
-      <sparkle:version>11</sparkle:version>
-      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Thu, 21 May 2026 03:15:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.1.0/MacBroom-1.1.0.zip"
-                 sparkle:edSignature="85ax3pNvCzJt+6/tGO+zAoKzXVthuoH1KIJ0t4aB9Z9V3wzbsOn2r+JgAFVFB3a+69UroP/Jlw8JuNWq5PuyAA=="
-                 length="9322264"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.1.0</h2>
-        <ul>
-          <li>🧹 Smart Clean: Cancel, iOS Backups, Large Files, Old Downloads</li>
-          <li>💾 RAM: Matches Activity Monitor, fixed memory calculation</li>
-          <li>📋 Menu Bar: Storage GB free, CPU temp for Apple Silicon</li>
-          <li>🔒 Lemon Squeezy integration</li>
-          <li>🐛 Bug fixes and performance improvements</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.9</title>
-      <sparkle:version>10</sparkle:version>
-      <sparkle:shortVersionString>1.0.9</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Sat, 02 May 2026 01:55:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.9/MacBroom-1.0.9.zip"
-                 sparkle:edSignature="7UMw6AVJOOdZ2+nG5baEirU7YA4pqX53+G8QTqU1h4fQcvKdYVe/BcY245ivubHgnF1PDX/EQKRoNBfVhmrrBA=="
-                 length="7191114"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.9</h2>
-        <ul>
-          <li>🔑 Fixed license activation (Paddle API key)</li>
-          <li>📝 Clarified Transaction ID input</li>
-          <li>🌐 Updated to macbroom.com</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.8</title>
-      <sparkle:version>9</sparkle:version>
-      <sparkle:shortVersionString>1.0.8</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Sat, 02 May 2026 01:22:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.8/MacBroom-1.0.8.zip"
-                 sparkle:edSignature="CLpcByG11FBWbFLhKbRslLVtXwhnve6cnJ39U8X1gBGOPSbrhAfS710yehv2buLz5fl6SKPR+Rd2ayN4iF2fCQ=="
-                 length="7256141"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.8</h2>
-        <ul>
-          <li>🌐 Updated website to macbroom.com</li>
-          <li>🔗 Fixed purchase button URL</li>
-          <li>📡 Sparkle feed URL updated</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.7</title>
-      <sparkle:version>8</sparkle:version>
-      <sparkle:shortVersionString>1.0.7</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Fri, 01 May 2026 23:55:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.7/MacBroom-1.0.7.zip"
-                 sparkle:edSignature="9aB7JZLNkPPQ0y8BWPLu8/OL2m/j0E64mtjV/yJoeNq6Uhg9W88i6X91pkStIb0PemV03DejMVwlSbQIttvuCQ=="
-                 length="7189017"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.7 — Universal Binary</h2>
-        <ul>
-          <li>🖥️ Universal Binary: Apple Silicon + Intel Macs</li>
-          <li>🔄 Fixed auto-update via Sparkle</li>
-          <li>🛡️ Single instance enforcement</li>
-        </ul>
-        ]]>
-      </description>
-    </item>
-    <item>
-      <title>Version 1.0.6</title>
-      <sparkle:version>7</sparkle:version>
-      <sparkle:shortVersionString>1.0.6</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>Fri, 01 May 2026 22:50:00 +0000</pubDate>
-      <enclosure url="https://github.com/alheekmahlib/macbroom/releases/download/v1.0.6/MacBroom-1.0.6.zip"
-                 sparkle:edSignature="Eup4VWlBh8WOo8KI/fIN31OrGBx0uG1ljuAvNmgAM3/R/yGc81iKUEORkJ1t80edc9Zp1xFkiDPJ5TTLTD2TBQ=="
-                 length="4280298"
-                 type="application/octet-stream" />
-      <description>
-        <![CDATA[
-        <h2>MacBroom 1.0.6</h2>
-        <ul>
-          <li>🔧 Sparkle auto-update now works correctly</li>
         </ul>
         ]]>
       </description>
