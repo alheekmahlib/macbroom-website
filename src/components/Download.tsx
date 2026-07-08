@@ -25,10 +25,27 @@ export default function DownloadSection() {
         // The first <item> in the feed is the newest release.
         const doc = new DOMParser().parseFromString(xml, "application/xml");
         const latest = doc.querySelector("item");
-        const v =
-          latest?.getElementsByTagName("sparkle:shortVersionString")[0]?.textContent ||
-          latest?.querySelector("title")?.textContent?.replace(/^Version\s+/i, "") ||
-          null;
+        if (!latest) return;
+
+        // Sparkle elements live in a namespace, so getElementsByTagName with
+        // the raw "sparkle:shortVersionString" name doesn't match in DOMParser.
+        // Walk the item's children and match by localName instead.
+        let v: string | null = null;
+        latest.childNodes.forEach((node) => {
+          if (node.nodeType === 1) {
+            const el = node as Element;
+            if (el.localName === "shortVersionString" && el.textContent) {
+              v = el.textContent;
+            }
+          }
+        });
+
+        // Fallback: parse "<title>MacBroom 1.3.1</title>" → "1.3.1"
+        if (!v) {
+          const title = latest.getElementsByTagName("title")[0]?.textContent;
+          if (title) v = title.replace(/^MacBroom\s+/i, "").trim();
+        }
+
         if (v) setVersion(v);
       })
       .catch(() => {
