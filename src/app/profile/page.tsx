@@ -3,7 +3,13 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { supabase, AUTH_REDIRECT_URL } from "@/lib/supabase"
-import { LogIn, LogOut, User, Key, Calendar, CheckCircle, XCircle, Copy, ExternalLink, Loader2, Cpu, DollarSign, Clock } from "lucide-react"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
+import { motion } from "framer-motion"
+import {
+  LogIn, LogOut, User, Key, Calendar, CheckCircle, XCircle, Copy, ExternalLink,
+  Loader2, Cpu, DollarSign, Clock, Mail, Lock, ShieldCheck, ArrowLeft, Sparkles
+} from "lucide-react"
 
 interface License {
   id: string
@@ -79,45 +85,6 @@ export default function Dashboard() {
     setLoading(false)
   }
 
-  const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError("")
-
-    const { data, error: authError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: AUTH_REDIRECT_URL,
-      },
-    })
-    if (authError) {
-      setError(authError.message)
-      setLoading(false)
-      return
-    }
-
-    // Supabase returns success (not an error) for an already-registered email;
-    // the tell-tale sign is an empty `identities` array.
-    if (!data.user || (data.user.identities ?? []).length === 0) {
-      setError("Email already registered. Try signing in.")
-      setLoading(false)
-      return
-    }
-
-    setError("")
-    // Email confirmation not required — user is signed in right away.
-    if (data.session) {
-      const u = { email: data.user.email ?? "", id: data.user.id }
-      setUser(u)
-      fetchLicenses(u.email)
-    } else {
-      setError(`We've sent a verification link to ${email}. Check your email to confirm your account.`)
-      setPassword("")
-    }
-    setLoading(false)
-  }
-
   const handleSignOut = async () => {
     await supabase.auth.signOut()
     setUser(null)
@@ -143,246 +110,340 @@ export default function Dashboard() {
   }
 
   // Compute display status: an "active" row whose expiry has passed shows as expired.
-  const displayStatus = (l: License): { label: string; color: string } => {
-    if (l.status === "cancelled") return { label: "Cancelled", color: "text-red-400" }
-    if (l.status === "inactive") return { label: "Inactive", color: "text-yellow-400" }
+  const displayStatus = (l: License): { label: string; color: string; dot: string; Icon: typeof CheckCircle } => {
+    if (l.status === "cancelled") return { label: "Cancelled", color: "text-red-400", dot: "bg-red-400", Icon: XCircle }
+    if (l.status === "inactive") return { label: "Inactive", color: "text-yellow-400", dot: "bg-yellow-400", Icon: XCircle }
     if (l.status === "active") {
       if (l.expires_at && new Date(l.expires_at) < new Date()) {
-        return { label: "Expired", color: "text-gray-400" }
+        return { label: "Expired", color: "text-gray-400", dot: "bg-gray-400", Icon: XCircle }
       }
-      return { label: "Active", color: "text-green-400" }
+      return { label: "Active", color: "text-green-400", dot: "bg-green-400", Icon: CheckCircle }
     }
-    return { label: l.status, color: "text-[#8B95A8]" }
+    return { label: l.status, color: "text-[#8B95A8]", dot: "bg-[#8B95A8]", Icon: XCircle }
   }
 
-  // Auth form
+  // ===== Unauthenticated: sign-in card (consistent with the rest of the site) =====
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0A0E1A]">
-        <div className="w-full max-w-sm mx-auto px-6">
-          {/* Logo */}
-          <div className="flex items-center justify-center gap-2.5 mb-8">
-            <img src="/icon.png" alt="MacBroom" width={36} height={36} className="rounded-xl" />
-            <span className="text-xl font-bold text-white">MacBroom</span>
-          </div>
+      <main className="relative min-h-screen">
+        <Navbar />
+        <section className="relative min-h-[calc(100vh-72px)] flex items-center justify-center px-6 py-24">
+          {/* Background effects (same as signin page) */}
+          <div className="absolute inset-0 bg-radial-glow pointer-events-none" />
+          <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-accent/5 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-purple-600/5 blur-3xl pointer-events-none" />
 
-          <div className="rounded-2xl bg-[#161F33] border border-white/5 p-6">
-            <h2 className="text-lg font-semibold text-white mb-1">Welcome back</h2>
-            <p className="text-sm text-[#8B95A8] mb-6">Sign in to manage your licenses</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-full max-w-md glass-card rounded-3xl p-8 sm:p-10 glow-accent-subtle"
+          >
+            {/* Logo */}
+            <div className="flex items-center justify-center gap-2.5 mb-8">
+              <img src="/icon.png" alt="MacBroom" width={36} height={36} className="rounded-xl" />
+              <span className="text-xl font-bold text-white tracking-tight">
+                Mac<span className="text-accent">Broom</span>
+              </span>
+            </div>
+
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-white mb-2">Welcome back</h2>
+              <p className="text-sm text-txt-dim">Sign in to manage your licenses</p>
+            </div>
+
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm"
+              >
+                {error}
+              </motion.div>
+            )}
 
             <form onSubmit={handleSignIn} className="space-y-4">
               <div>
-                <label className="block text-xs text-[#8B95A8] mb-1.5">Email</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full px-3 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder:text-[#8B95A8]/50 focus:outline-none focus:border-[#4073F2]"
-                  placeholder="you@example.com"
-                />
+                <label className="block text-sm font-medium text-txt-dim mb-2">Email</label>
+                <div className="relative">
+                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-txt-dim/50" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    placeholder="you@example.com"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:ring-1 focus:ring-accent/20 text-white text-sm placeholder:text-txt-dim/30 outline-none transition-all"
+                  />
+                </div>
               </div>
               <div>
-                <label className="block text-xs text-[#8B95A8] mb-1.5">Password</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="w-full px-3 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white placeholder:text-[#8B95A8]/50 focus:outline-none focus:border-[#4073F2]"
-                  placeholder="••••••••"
-                />
+                <label className="block text-sm font-medium text-txt-dim mb-2">Password</label>
+                <div className="relative">
+                  <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-txt-dim/50" />
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    placeholder="••••••••"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:ring-1 focus:ring-accent/20 text-white text-sm placeholder:text-txt-dim/30 outline-none transition-all"
+                  />
+                </div>
               </div>
-
-              {error && (
-                <p className="text-xs text-red-400">{error}</p>
-              )}
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-white bg-[#4073F2] hover:bg-[#5A8AFF] py-2.5 rounded-lg transition-colors disabled:opacity-50"
+                className="w-full py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-sm transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
               >
-                <LogIn size={16} />
-                {loading ? "Signing in..." : "Sign In"}
-              </button>
-
-              <button
-                type="button"
-                onClick={handleSignUp}
-                disabled={loading}
-                className="w-full text-sm text-[#8B95A8] hover:text-white transition-colors py-1"
-              >
-                Don&apos;t have an account? <span className="text-[#4073F2]">Sign up</span>
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Signing in…
+                  </>
+                ) : (
+                  <>
+                    <LogIn className="w-4 h-4" />
+                    Sign In
+                  </>
+                )}
               </button>
             </form>
-          </div>
 
-          <Link href="/" className="block text-center text-xs text-[#8B95A8] mt-6 hover:text-white transition-colors">
-            ← Back to homepage
-          </Link>
-        </div>
-      </div>
+            <p className="text-xs text-txt-dim/50 text-center mt-6">
+              Don&apos;t have an account?{" "}
+              <Link href="/signin" className="text-accent hover:text-accent-hover transition-colors">
+                Sign up
+              </Link>
+            </p>
+          </motion.div>
+        </section>
+        <Footer />
+      </main>
     )
   }
 
-  // Dashboard
+  // ===== Authenticated: license dashboard =====
   return (
-    <div className="min-h-screen bg-[#0A0E1A]">
-      {/* Header */}
-      <header className="border-b border-white/5 bg-[#121D2E]/80 backdrop-blur-md">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4073F2] to-[#7B9FFF] flex items-center justify-center">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1" />
-              </svg>
+    <main className="relative min-h-screen">
+      <Navbar />
+
+      <section className="relative pt-32 pb-24 px-6">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-radial-glow pointer-events-none" />
+        <div className="absolute top-20 left-1/4 w-[400px] h-[400px] rounded-full bg-accent/5 blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-4xl mx-auto">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-10"
+          >
+            <div className="flex items-center gap-2 text-sm font-semibold text-accent tracking-wider uppercase mb-3">
+              <ShieldCheck size={16} />
+              <span>Your Account</span>
             </div>
-            <span className="text-sm font-semibold text-white">Profile</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <User size={14} className="text-[#8B95A8]" />
-              <span className="text-sm text-[#8B95A8]">{user.email}</span>
-            </div>
-            <button
-              onClick={handleSignOut}
-              className="flex items-center gap-1.5 text-sm text-[#8B95A8] hover:text-red-400 transition-colors"
-            >
-              <LogOut size={14} />
-              Sign Out
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <div className="max-w-4xl mx-auto px-6 py-8">
-        <h1 className="text-2xl font-bold text-white mb-2">My Licenses</h1>
-        <p className="text-sm text-[#8B95A8] mb-8">
-          Manage your MacBroom licenses and activation keys for <span className="text-white">{user.email}</span>.
-        </p>
-
-        {error && (
-          <div className="mb-6 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
-            {error}
-          </div>
-        )}
-
-        {loadingLicenses ? (
-          <div className="rounded-2xl bg-[#161F33] border border-white/5 p-12 text-center">
-            <Loader2 size={32} className="text-[#4073F2] mx-auto mb-4 animate-spin" />
-            <p className="text-sm text-[#8B95A8]">Loading your licenses…</p>
-          </div>
-        ) : licenses.length === 0 ? (
-          <div className="rounded-2xl bg-[#161F33] border border-white/5 p-12 text-center">
-            <Key size={40} className="text-[#8B95A8] mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-white mb-2">No licenses yet</h3>
-            <p className="text-sm text-[#8B95A8] mb-6">
-              No licenses are linked to <span className="text-white">{user.email}</span> yet.
-              Purchase a Pro license to get started.
+            <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">My Licenses</h1>
+            <p className="text-txt-dim text-base">
+              Manage your MacBroom licenses and activation keys for{" "}
+              <span className="text-white font-medium">{user.email}</span>.
             </p>
-            <Link href="/#pricing" className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-[#4073F2] hover:bg-[#5A8AFF] px-6 py-2.5 rounded-lg transition-colors">
-              <ExternalLink size={14} />
-              Purchase License
-            </Link>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {licenses.map((license) => {
-              const st = displayStatus(license)
-              const deviceNames = fmtDevices(license.device_names)
-              const planLabel = license.plan.charAt(0).toUpperCase() + license.plan.slice(1)
+          </motion.div>
 
-              return (
-                <div key={license.id} className="rounded-xl bg-[#161F33] border border-white/5 p-6">
-                  {/* Header: plan + status */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      {st.label === "Active" ? (
-                        <CheckCircle size={20} className="text-green-400" />
-                      ) : (
-                        <XCircle size={20} className={st.color} />
-                      )}
-                      <div>
-                        <h3 className="font-semibold text-white">{planLabel} License</h3>
-                        <p className={`text-xs ${st.color}`}>{st.label}</p>
+          {error && (
+            <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+              {error}
+            </div>
+          )}
+
+          {loadingLicenses ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="glass-card rounded-3xl p-16 text-center"
+            >
+              <Loader2 size={32} className="text-accent mx-auto mb-4 animate-spin" />
+              <p className="text-sm text-txt-dim">Loading your licenses…</p>
+            </motion.div>
+          ) : licenses.length === 0 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="glass-card rounded-3xl p-12 lg:p-16 text-center"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6">
+                <Key size={32} className="text-accent" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">No licenses yet</h3>
+              <p className="text-sm text-txt-dim mb-8 max-w-md mx-auto">
+                No licenses are linked to <span className="text-white">{user.email}</span> yet.
+                Purchase a Pro license to unlock all MacBroom features.
+              </p>
+              <Link
+                href="/#pricing"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-sm transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 active:scale-[0.98]"
+              >
+                <ExternalLink size={16} />
+                Purchase License
+              </Link>
+            </motion.div>
+          ) : (
+            <div className="space-y-5">
+              {licenses.map((license, idx) => {
+                const st = displayStatus(license)
+                const deviceNames = fmtDevices(license.device_names)
+                const planLabel = license.plan.charAt(0).toUpperCase() + license.plan.slice(1)
+                const isLifetime = license.billing_cycle === "lifetime"
+
+                return (
+                  <motion.div
+                    key={license.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: idx * 0.08 }}
+                    className="glass-card rounded-3xl p-6 lg:p-8"
+                  >
+                    {/* Header: plan + status */}
+                    <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-11 h-11 rounded-2xl flex items-center justify-center ${st.label === "Active" ? "bg-green-400/10" : "bg-white/5"}`}>
+                          <st.Icon size={22} className={st.color} />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-white">{planLabel} License</h3>
+                          <div className="flex items-center gap-1.5 mt-0.5">
+                            <span className={`w-1.5 h-1.5 rounded-full ${st.dot}`} />
+                            <p className={`text-xs font-medium ${st.color}`}>{st.label}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {license.billing_cycle && (
+                          <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-accent/10 text-accent font-medium capitalize">
+                            <Sparkles size={12} />
+                            {fmtBilling(license.billing_cycle)}
+                          </span>
+                        )}
+                        <span className="text-xs px-3 py-1.5 rounded-full bg-white/5 text-txt-dim font-medium">
+                          {planLabel.toUpperCase()}
+                        </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      {license.billing_cycle && (
-                        <span className="text-xs px-2 py-1 rounded-full bg-[#4073F2]/10 text-[#5A8AFF] capitalize">
-                          {fmtBilling(license.billing_cycle)}
-                        </span>
-                      )}
-                      <span className="text-xs px-2 py-1 rounded-full bg-white/5 text-[#8B95A8]">
-                        {planLabel.toUpperCase()}
-                      </span>
-                    </div>
-                  </div>
 
-                  <div className="space-y-3">
                     {/* License Key */}
-                    <div className="flex items-center gap-2">
-                      <Key size={14} className="text-[#8B95A8]" />
-                      <code className="text-sm font-mono text-white bg-white/5 px-3 py-1 rounded flex-1 truncate">
-                        {license.license_key}
-                      </code>
-                      <button
-                        onClick={() => copyKey(license.license_key)}
-                        className="text-[#8B95A8] hover:text-white transition-colors p-1"
-                        title="Copy key"
-                      >
-                        {copiedKey === license.license_key ? (
-                          <CheckCircle size={14} className="text-green-400" />
-                        ) : (
-                          <Copy size={14} />
-                        )}
-                      </button>
+                    <div className="rounded-2xl bg-white/5 border border-white/5 p-4 mb-5">
+                      <p className="text-xs text-txt-dim mb-2 font-medium tracking-wide uppercase">License Key</p>
+                      <div className="flex items-center gap-2">
+                        <Key size={16} className="text-txt-dim shrink-0" />
+                        <code className="text-base font-mono text-white flex-1 truncate tracking-wide">
+                          {license.license_key}
+                        </code>
+                        <button
+                          onClick={() => copyKey(license.license_key)}
+                          className="shrink-0 flex items-center gap-1.5 text-xs font-medium text-txt-dim hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg transition-all"
+                          title="Copy key"
+                        >
+                          {copiedKey === license.license_key ? (
+                            <>
+                              <CheckCircle size={14} className="text-green-400" />
+                              <span className="text-green-400">Copied</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy size={14} />
+                              <span>Copy</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
 
                     {/* Metadata grid */}
-                    <div className="grid grid-cols-2 gap-3 text-xs">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                       {/* Price paid */}
-                      <div className="flex items-center gap-2">
-                        <DollarSign size={12} className="text-[#8B95A8]" />
-                        <span className="text-[#8B95A8]">Paid: <span className="text-white">{fmtPrice(license.price_paid)}</span></span>
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-green-400/10 flex items-center justify-center shrink-0">
+                          <DollarSign size={14} className="text-green-400" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-[10px] text-txt-dim uppercase tracking-wide">Paid</p>
+                          <p className="text-sm text-white font-medium truncate">{fmtPrice(license.price_paid)}</p>
+                        </div>
                       </div>
                       {/* Device limit */}
-                      <div className="flex items-center gap-2">
-                        <Cpu size={12} className="text-[#8B95A8]" />
-                        <span className="text-[#8B95A8]">Devices: <span className="text-white">{license.device_limit} Mac{license.device_limit > 1 ? "s" : ""}</span></span>
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                          <Cpu size={14} className="text-accent" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-[10px] text-txt-dim uppercase tracking-wide">Devices</p>
+                          <p className="text-sm text-white font-medium truncate">
+                            {license.device_limit} Mac{license.device_limit > 1 ? "s" : ""}
+                          </p>
+                        </div>
                       </div>
                       {/* Expiry */}
-                      <div className="flex items-center gap-2">
-                        <Calendar size={12} className="text-[#8B95A8]" />
-                        <span className="text-[#8B95A8]">
-                          {license.billing_cycle === "lifetime" ? "Lifetime" : "Expires"}:{" "}
-                          <span className="text-white">
-                            {license.billing_cycle === "lifetime" ? "Never" : fmtDate(license.expires_at)}
-                          </span>
-                        </span>
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-purple-400/10 flex items-center justify-center shrink-0">
+                          <Calendar size={14} className="text-purple-400" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-[10px] text-txt-dim uppercase tracking-wide">
+                            {isLifetime ? "Validity" : "Expires"}
+                          </p>
+                          <p className="text-sm text-white font-medium truncate">
+                            {isLifetime ? "Lifetime" : fmtDate(license.expires_at)}
+                          </p>
+                        </div>
                       </div>
-                      {/* Created */}
-                      <div className="flex items-center gap-2">
-                        <Clock size={12} className="text-[#8B95A8]" />
-                        <span className="text-[#8B95A8]">Purchased: <span className="text-white">{fmtDate(license.created_at)}</span></span>
+                      {/* Purchased */}
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-blue-400/10 flex items-center justify-center shrink-0">
+                          <Clock size={14} className="text-blue-400" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-[10px] text-txt-dim uppercase tracking-wide">Purchased</p>
+                          <p className="text-sm text-white font-medium truncate">{fmtDate(license.created_at)}</p>
+                        </div>
                       </div>
                     </div>
 
                     {/* Activated devices (if any) */}
                     {deviceNames && (
-                      <div className="flex items-center gap-2 text-xs pt-1">
-                        <User size={12} className="text-[#8B95A8]" />
-                        <span className="text-[#8B95A8]">Activated on: <span className="text-white">{deviceNames}</span></span>
+                      <div className="mt-5 pt-5 border-t border-white/5 flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
+                          <User size={14} className="text-txt-dim" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-[10px] text-txt-dim uppercase tracking-wide">Activated on</p>
+                          <p className="text-sm text-white font-medium truncate">{deviceNames}</p>
+                        </div>
                       </div>
                     )}
-                  </div>
-                </div>
-              )
-            })}
+                  </motion.div>
+                )
+              })}
+            </div>
+          )}
+
+          {/* Sign out */}
+          <div className="mt-10 flex justify-center">
+            <button
+              onClick={handleSignOut}
+              className="inline-flex items-center gap-2 text-sm text-txt-dim hover:text-red-400 transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
+            >
+              <LogOut size={14} />
+              Sign out
+            </button>
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
   )
 }
