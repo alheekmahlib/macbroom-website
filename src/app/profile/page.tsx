@@ -5,6 +5,7 @@ import Link from "next/link"
 import { supabase, AUTH_REDIRECT_URL } from "@/lib/supabase"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import ErrorReport from "@/components/ErrorReport"
 import { motion } from "framer-motion"
 import {
   LogIn, LogOut, User, Key, Calendar, CheckCircle, XCircle, Copy, ExternalLink,
@@ -256,6 +257,7 @@ export default function Dashboard() {
           {error && (
             <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
               {error}
+              <ErrorReport message={error} context="profile_licenses" />
             </div>
           )}
 

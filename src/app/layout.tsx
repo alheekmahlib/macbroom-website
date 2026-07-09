@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import AuthRedirectHandler from "@/components/AuthRedirectHandler";
+import HelpWidget from "@/components/HelpWidget";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <AuthRedirectHandler />
         </Suspense>
+        <HelpWidget />
         {children}
       </body>
     </html>

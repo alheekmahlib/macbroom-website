@@ -80,7 +80,7 @@ export default function DownloadSection() {
           </div>
 
           <h3 className="text-2xl font-bold text-white mb-2">MacBroom</h3>
-          <p className="text-txt-dim text-sm mb-6">Version {version} · macOS 13+ · Universal Binary</p>
+          <p className="text-txt-dim text-sm mb-6">Version {version} · macOS 13+ · Apple Silicon</p>
 
           {/* Download button */}
           <a
@@ -99,7 +99,7 @@ export default function DownloadSection() {
             </div>
             <div className="flex items-center gap-2">
               <Monitor size={14} />
-              Apple Silicon & Intel
+              Apple Silicon
             </div>
           </div>
 

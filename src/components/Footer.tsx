@@ -24,9 +24,9 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white mb-4">Product</h4>
             <ul className="space-y-3">
               {[
-                { label: "Features", href: "#features" },
-                { label: "Pricing", href: "#pricing" },
-                { label: "FAQ", href: "#faq" },
+                { label: "Features", href: "/#features" },
+                { label: "Pricing", href: "/#pricing" },
+                { label: "Support", href: "/support" },
                 { label: "Sign In", href: "/signin" },
               ].map((link) => (
                 <li key={link.href}>
@@ -50,6 +50,11 @@ export default function Footer() {
               <li>
                 <Link href="/terms" className="text-sm text-txt-dim hover:text-white transition-colors">
                   Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/support" className="text-sm text-txt-dim hover:text-white transition-colors">
+                  Support
                 </Link>
               </li>
               <li>
