@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, User, LogOut } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
@@ -9,6 +10,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [user, setUser] = useState<{ email: string } | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -31,10 +33,14 @@ export default function Navbar() {
     setUser(null);
   };
 
+  // Hash links (Features/Pricing/FAQ) only exist on the homepage. When we're on
+  // an inner page (e.g. /profile, /signin), prefix them with "/" so they route
+  // to the homepage anchor instead of staying on the current page.
+  const onInnerPage = pathname !== "/";
   const navLinks = [
-    { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Features", href: onInnerPage ? "/#features" : "#features" },
+    { label: "Pricing", href: onInnerPage ? "/#pricing" : "#pricing" },
+    { label: "FAQ", href: onInnerPage ? "/#faq" : "#faq" },
   ];
   const allNavLinks = user ? [...navLinks, { label: "Profile", href: "/profile" }] : navLinks;
 
