@@ -64,6 +64,9 @@ function ThankYouContent() {
             </Link>
             .
           </p>
+          <p className="text-xs text-accent/80 mt-2">
+            Tip: sign up with the same email to manage your license and subscription online.
+          </p>
         </div>
 
         {/* Steps */}
