@@ -426,6 +426,25 @@ export default function Dashboard() {
                         </div>
                       </div>
                     )}
+
+                    {/* Manage subscription (monthly/yearly active only) */}
+                    {(license.billing_cycle === "monthly" || license.billing_cycle === "yearly") &&
+                      st.label === "Active" && (
+                        <div className="mt-5 pt-5 border-t border-white/5">
+                          <a
+                            href="https://alheekmahlib.lemonsqueezy.com/billing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:text-accent-hover transition-colors"
+                          >
+                            <ExternalLink size={13} />
+                            Manage Subscription
+                          </a>
+                          <p className="text-[11px] text-txt-dim/60 mt-1.5">
+                            Cancel renewal, update payment method, or view invoices via Lemon Squeezy.
+                          </p>
+                        </div>
+                      )}
                   </motion.div>
                 )
               })}
