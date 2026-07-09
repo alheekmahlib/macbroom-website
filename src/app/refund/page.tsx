@@ -24,18 +24,18 @@ export default function RefundPage() {
             <h2 className="text-lg font-semibold text-white mb-3">How to Request a Refund</h2>
             <p>To request a refund, please contact us at:</p>
             <ul className="list-disc list-inside space-y-2 ml-2 mt-2">
-              <li>Email: <a href="mailto:support@macbroom.com" className="text-accent hover:underline">support@macbroom.com</a></li>
+              <li>Email: <a href="mailto:info@vexaltech.dev" className="text-accent hover:underline">info@vexaltech.dev</a></li>
               <li>Contact Form: <a href="/contact" className="text-accent hover:underline">macbroom.com/contact</a></li>
             </ul>
             <p className="mt-3">
-              Please include your Transaction ID (starts with <code className="text-accent">txn_</code>) and the email address used for the purchase.
+              Please include your license key and the email address used for the purchase.
             </p>
           </section>
 
           <section>
             <h2 className="text-lg font-semibold text-white mb-3">Refund Processing</h2>
             <ul className="list-disc list-inside space-y-2 ml-2">
-              <li>Refunds are processed through <strong className="text-white">Paddle</strong>, our payment processor</li>
+              <li>Refunds are processed through <strong className="text-white">Lemon Squeezy</strong>, our payment processor</li>
               <li>Refunds will be issued to the original payment method</li>
               <li>Processing time is typically 5-10 business days</li>
               <li>You will receive a confirmation email once the refund is processed</li>
@@ -59,7 +59,7 @@ export default function RefundPage() {
           <section>
             <h2 className="text-lg font-semibold text-white mb-3">Contact</h2>
             <p>
-              If you have questions about refunds, please contact us at <a href="mailto:support@macbroom.com" className="text-accent hover:underline">support@macbroom.com</a>.
+              If you have questions about refunds, please contact us at <a href="mailto:info@vexaltech.dev" className="text-accent hover:underline">info@vexaltech.dev</a>.
             </p>
           </section>
         </div>

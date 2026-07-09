@@ -60,7 +60,7 @@ export default function ContactPage() {
         {/* Quick Actions */}
         <div className="grid sm:grid-cols-2 gap-4 mb-10">
           <a
-            href="mailto:support@macbroom.com"
+            href="mailto:info@vexaltech.dev"
             className="glass-card rounded-2xl p-5 flex items-center gap-4 hover:bg-white/[0.03] transition-all group"
           >
             <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
@@ -68,7 +68,7 @@ export default function ContactPage() {
             </div>
             <div>
               <p className="text-white font-semibold text-sm group-hover:text-accent transition-colors">Email Us</p>
-              <p className="text-txt-dim text-xs">support@macbroom.com</p>
+              <p className="text-txt-dim text-xs">info@vexaltech.dev</p>
             </div>
           </a>
           <a

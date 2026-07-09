@@ -16,7 +16,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white mb-3">1. Acceptance of Terms</h2>
             <p>
-              By downloading, installing, or using MacBroom (&quot;the App&quot;), you agree to be bound by these Terms of Service. If you do not agree, do not use the App. These terms are between you and Al-Heekmah Library (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;).
+              By downloading, installing, or using MacBroom (&quot;the App&quot;), you agree to be bound by these Terms of Service. If you do not agree, do not use the App. These terms are between you and VexalTech (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;).
             </p>
           </section>
 
@@ -34,10 +34,10 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white mb-3">3. Payment &amp; Billing</h2>
             <ul className="list-disc list-inside space-y-2 ml-2">
-              <li>Payments are processed securely through <strong className="text-white">Paddle</strong></li>
+              <li>Payments are processed securely through <strong className="text-white">Lemon Squeezy</strong></li>
               <li>Prices are displayed in USD and may be subject to applicable taxes</li>
               <li>Lifetime licenses are one-time purchases with no recurring charges</li>
-              <li>Monthly and yearly subscriptions auto-renew. You may cancel at any time from your Paddle account</li>
+              <li>Monthly and yearly subscriptions auto-renew. You may cancel at any time from your Lemon Squeezy account</li>
             </ul>
           </section>
 
@@ -55,7 +55,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white mb-3">5. Intellectual Property</h2>
             <p>
-              MacBroom and all associated content, design, and code are the intellectual property of Al-Heekmah Library. All rights not expressly granted in these terms are reserved.
+              MacBroom and all associated content, design, and code are the intellectual property of VexalTech. All rights not expressly granted in these terms are reserved.
             </p>
           </section>
 
@@ -69,7 +69,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white mb-3">7. Limitation of Liability</h2>
             <p>
-              To the maximum extent permitted by law, Al-Heekmah Library shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of MacBroom, even if we have been advised of the possibility of such damages.
+              To the maximum extent permitted by law, VexalTech shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of MacBroom, even if we have been advised of the possibility of such damages.
             </p>
           </section>
 
@@ -104,7 +104,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white mb-3">12. Contact</h2>
             <p>
-              For questions about these terms, contact us at <a href="mailto:support@macbroom.com" className="text-accent hover:underline">support@macbroom.com</a> or visit our <a href="/contact" className="text-accent hover:underline">Contact page</a>.
+              For questions about these terms, contact us at <a href="mailto:info@vexaltech.dev" className="text-accent hover:underline">info@vexaltech.dev</a> or visit our <a href="/contact" className="text-accent hover:underline">Contact page</a>.
             </p>
           </section>
         </div>

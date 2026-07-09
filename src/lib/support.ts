@@ -114,7 +114,7 @@ export async function submitTicket(
   } catch {
     // If Formspree also failed but we have a ticket id, still call it success.
     if (!ticketId) {
-      return { error: "Could not submit your message. Please try again or email support@macbroom.com." }
+      return { error: "Could not submit your message. Please try again or email info@vexaltech.dev." }
     }
   }
 

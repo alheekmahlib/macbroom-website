@@ -69,7 +69,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-txt-dim">
-            © 2025 Al-Heekmah Library. All rights reserved.
+            © 2026 VexalTech. All rights reserved.
           </p>
           <p className="text-xs text-txt-dim flex items-center gap-1.5">
             Built with <Heart size={12} className="text-red-400" /> for macOS
