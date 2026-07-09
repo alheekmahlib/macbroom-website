@@ -1,7 +1,11 @@
 import { supabase } from "./supabase"
 
 // Formspree endpoint (same one the old /contact page used). Forwards to email.
+// The PRIMARY recipient (info@vexaltech.dev) is set in the Formspree dashboard;
+// it cannot be overridden from the client for anti-spam reasons. The CC list
+// below is attached to every submission via the _cc field.
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnjwnorw"
+const SUPPORT_CC = "haozo89@gmail.com, ahmedalboishee@gmail.com"
 
 export type TicketType = "general" | "bug" | "billing" | "feature"
 
@@ -96,6 +100,7 @@ export async function submitTicket(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: input.email,
+        _cc: SUPPORT_CC,
         _subject: `[MacBroom${ticketId ? ` #${ticketId.slice(0, 8)}` : ""}] ${
           TICKET_TYPE_LABELS[input.type]
         }`,

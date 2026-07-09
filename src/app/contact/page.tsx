@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Send, CheckCircle, AlertCircle, Mail, MessageSquare, Bug, CreditCard, HelpCircle } from "lucide-react";
+import { submitTicket, type TicketType } from "@/lib/support";
 
-type Subject = "general" | "bug" | "billing" | "feature";
+type Subject = TicketType;
 
 const subjects: { id: Subject; label: string; icon: React.ReactNode }[] = [
   { id: "general", label: "General Question", icon: <MessageSquare size={18} /> },
@@ -25,19 +26,14 @@ export default function ContactPage() {
     setStatus("sending");
 
     try {
-      const res = await fetch("https://formspree.io/f/mnjwnorw", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          _subject: `[MacBroom] ${subjects.find(s => s.id === subject)?.label}`,
-          subject: subjects.find(s => s.id === subject)?.label,
-          message,
-        }),
+      const { error } = await submitTicket({
+        type: subject,
+        subject: undefined,
+        message,
+        email,
       });
 
-      if (res.ok) {
+      if (!error) {
         setStatus("success");
         setName("");
         setEmail("");
