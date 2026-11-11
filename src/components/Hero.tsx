@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8 text-center">
         <div className="animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8" style={{ animationDelay: "0.1s" }}>
           <Sparkles className="w-4 h-4 text-accent" />
-          <span className="text-sm font-medium text-txt-dim">Trusted by thousands of Mac users</span>
+          <span className="text-sm font-medium text-txt-dim">A native Mac cleaner</span>
         </div>
 
         <h1 className="animate-fade-up text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-white" style={{ animationDelay: "0.2s" }}>
@@ -41,7 +41,7 @@ export default function Hero() {
               </div>
               <div className="flex-1 text-center text-xs text-txt-dim">MacBroom</div>
             </div>
-            <img src="/screenshots/home.png" alt="MacBroom Home Screen" className="w-full rounded-b-xl" />
+            <img src="/screenshots/home-new.png" alt="MacBroom Home Screen" className="w-full rounded-b-xl" />
           </div>
         </div>
 

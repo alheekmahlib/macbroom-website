@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import { RotateCcw } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Refund Policy",
+  description:
+    "MacBroom offers a 30-day money-back guarantee. Read the full refund policy and learn how to request a refund.",
+  alternates: { canonical: "/refund" },
+  robots: { index: true, follow: true },
+};
 
 export default function RefundPage() {
   return (

@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /signin
+Disallow: /profile
+Disallow: /thank-you
 
 Sitemap: https://macbroom.com/sitemap.xml

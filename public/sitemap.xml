@@ -2,26 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://macbroom.com/</loc>
+    <lastmod>2026-07-09</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://macbroom.com/contact</loc>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://macbroom.com/support</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://macbroom.com/privacy</loc>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.3</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://macbroom.com/terms</loc>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.3</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://macbroom.com/refund</loc>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.3</priority>
     <changefreq>monthly</changefreq>
   </url>

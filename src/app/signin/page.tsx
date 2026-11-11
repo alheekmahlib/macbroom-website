@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { supabase, AUTH_REDIRECT_URL } from "@/lib/supabase";
-import { Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff, Key, RefreshCw, ShieldCheck } from "lucide-react";
+import { Mail, Lock, ArrowLeft, Loader2, Eye, EyeOff, RefreshCw, ShieldCheck } from "lucide-react";
 
 type Mode = "signin" | "signup" | "activate" | "recovery";
 
@@ -18,7 +18,6 @@ function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [licenseKey, setLicenseKey] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [secondaryLoading, setSecondaryLoading] = useState(false);
@@ -216,52 +215,6 @@ function SignInForm() {
     setLoading(false);
   };
 
-  const handleActivate = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    // First sign in or sign up
-    if (!email || !password) {
-      setError("Please sign in or create an account first.");
-      setLoading(false);
-      return;
-    }
-
-    // Try to get current session
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (!session) {
-      // Try to sign in
-      const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-      if (signInError) {
-        setError("Invalid credentials. Please sign in first.");
-        setLoading(false);
-        return;
-      }
-    }
-
-    // Activate license
-    const { data, error: activationError } = await supabase
-      .from("licenses")
-      .update({
-        status: "active",
-        activated_at: new Date().toISOString(),
-        user_id: (await supabase.auth.getUser()).data.user?.id,
-      })
-      .eq("license_key", licenseKey)
-      .eq("status", "inactive")
-      .select()
-      .single();
-
-    if (activationError || !data) {
-      setError("Invalid or already activated license key.");
-    } else {
-      setSuccess("License activated successfully! 🎉");
-      router.push("/");
-    }
-    setLoading(false);
-  };
 
   return (
     <main className="relative min-h-screen flex items-center justify-center px-6 py-20">
@@ -409,7 +362,7 @@ function SignInForm() {
               ? "Sign in to access your MacBroom account."
               : mode === "signup"
               ? "Create a free account to get started."
-              : "Enter your license key to unlock Pro features."}
+              : "Activate your license on the Mac where you use MacBroom."}
           </p>
 
           {/* Error / Success */}
@@ -433,7 +386,15 @@ function SignInForm() {
           )}
 
           {/* Form */}
-          <form onSubmit={mode === "signin" ? handleSignIn : mode === "signup" ? handleSignUp : handleActivate} className="space-y-4">
+          {mode === "activate" ? (
+            <div className="space-y-4 text-sm text-[#8B95A8]">
+              <p>Open MacBroom on your Mac, go to Settings, and select Activate. Enter your license key in the app.</p>
+              <Link href="/#download" className="inline-flex w-full justify-center rounded-xl bg-accent px-4 py-3.5 font-semibold text-white hover:bg-accent-hover">
+                Download MacBroom
+              </Link>
+            </div>
+          ) : (
+          <form onSubmit={mode === "signin" ? handleSignIn : handleSignUp} className="space-y-4">
             {/* Email */}
             <div>
               <label className="block text-sm font-medium text-[#8B95A8] mb-2">
@@ -477,26 +438,6 @@ function SignInForm() {
               </div>
             </div>
 
-            {/* License Key (only for activate) */}
-            {mode === "activate" && (
-              <div>
-                <label className="block text-sm font-medium text-[#8B95A8] mb-2">
-                  License Key
-                </label>
-                <div className="relative">
-                  <Key className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-[#8B95A8]/50" />
-                  <input
-                    type="text"
-                    value={licenseKey}
-                    onChange={(e) => setLicenseKey(e.target.value)}
-                    required
-                    placeholder="XXXX-XXXX-XXXX-XXXX"
-                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:ring-1 focus:ring-accent/20 text-white text-sm placeholder:text-[#8B95A8]/30 outline-none transition-all font-mono tracking-wider"
-                  />
-                </div>
-              </div>
-            )}
-
             {/* Submit */}
             <button
               type="submit"
@@ -506,14 +447,12 @@ function SignInForm() {
               {loading ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  {mode === "activate" ? "Activating..." : "Loading..."}
+                  Loading...
                 </>
               ) : (
                 mode === "signin"
                   ? "Sign In"
-                  : mode === "signup"
-                  ? "Create Account"
-                  : "Activate License"
+                  : "Create Account"
               )}
             </button>
 
@@ -536,6 +475,7 @@ function SignInForm() {
               </button>
             )}
           </form>
+          )}
 
           {/* Footer text */}
           <p className="text-xs text-[#8B95A8]/50 text-center mt-6">
@@ -554,7 +494,7 @@ function SignInForm() {
                 </button>
               </>
             ) : (
-              "Have a license key? Sign in and activate it here."
+              "Your license is activated in the MacBroom app."
             )}
           </p>
           </>

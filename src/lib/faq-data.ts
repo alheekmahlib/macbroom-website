@@ -10,7 +10,7 @@ export interface FaqItem {
 export const faqs: FaqItem[] = [
   {
     q: "Is MacBroom safe to use?",
-    a: "Absolutely. MacBroom uses a three-level safety system: safe, caution, and unsafe. Protected system files are never touched. All deletions go to Trash first.",
+    a: "Review scan results and selected items before cleaning. Smart Clean moves selected files to Trash, while selected Trash contents and some other items can be permanently removed after confirmation.",
     category: "Safety",
   },
   {
@@ -20,7 +20,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "What does the license include?",
-    a: "The Pro license includes access to all features and updates. Available as monthly, yearly, or lifetime plans. One license per device.",
+    a: "The Pro license includes access to all features and updates. Available as monthly, yearly, or lifetime plans. Choose a plan for one or two Macs.",
     category: "Billing",
   },
   {
@@ -30,7 +30,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Does it work on Apple Silicon (M1/M2/M3/M4)?",
-    a: "Yes, MacBroom is built natively for Apple Silicon and runs natively on all M-series Macs running macOS 13 or later.",
+    a: "Yes, MacBroom is built natively for Apple Silicon and runs natively on all M-series Macs running macOS 26 or later.",
     category: "Product",
   },
   {
@@ -45,7 +45,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "How do I activate my license?",
-    a: "Open MacBroom, go to Settings, paste your license key, and click Activate. You can also activate from your profile page on the website.",
+    a: "Open MacBroom, go to Settings, paste your license key, and click Activate. Activation is completed in the Mac app.",
     category: "Billing",
   },
   {
@@ -55,7 +55,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "What macOS version do I need?",
-    a: "MacBroom requires macOS 13 (Ventura) or later, running on Apple Silicon (M1/M2/M3/M4).",
+    a: "MacBroom requires macOS 26 or later, running on Apple Silicon (M1/M2/M3/M4).",
     category: "Product",
   },
 ]

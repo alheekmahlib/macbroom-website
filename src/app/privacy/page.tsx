@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import { Shield } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How MacBroom and VexalTech collect, use, and protect your data. We store as little as possible and never sell your information.",
+  alternates: { canonical: "/privacy" },
+  robots: { index: true, follow: true },
+};
 
 export default function PrivacyPage() {
   return (

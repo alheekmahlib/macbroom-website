@@ -16,7 +16,7 @@ const APPCAST_URL = "/appcast.xml";
 export default function DownloadSection() {
   const downloadUrl = DOWNLOAD_URL;
   // Fallback shown until the appcast resolves; also used if parsing fails.
-  const [version, setVersion] = useState("1.3.0");
+  const [version, setVersion] = useState("1.3.2");
 
   useEffect(() => {
     let cancelled = false;
@@ -80,7 +80,7 @@ export default function DownloadSection() {
           </div>
 
           <h3 className="text-2xl font-bold text-white mb-2">MacBroom</h3>
-          <p className="text-txt-dim text-sm mb-6">Version {version} · macOS 13+ · Apple Silicon</p>
+          <p className="text-txt-dim text-sm mb-6">Version {version} · macOS 26+ · Apple Silicon</p>
 
           {/* Download button */}
           <a
@@ -95,7 +95,7 @@ export default function DownloadSection() {
           <div className="flex items-center justify-center gap-6 mt-8 text-sm text-txt-dim">
             <div className="flex items-center gap-2">
               <Apple size={14} />
-              macOS 13+
+              macOS 26+
             </div>
             <div className="flex items-center gap-2">
               <Monitor size={14} />
@@ -124,7 +124,7 @@ export default function DownloadSection() {
         {/* Trust badges */}
         <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-sm text-txt-dim animate-fade-up" style={{ animationDelay: "0.3s" }}>
           {[
-            "No data collection",
+            "Built for macOS",
             "Native Swift app",
             "Free version available",
           ].map((t, i) => (

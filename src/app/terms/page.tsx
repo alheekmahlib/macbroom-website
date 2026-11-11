@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import { FileText } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "The terms governing your use of MacBroom, including license grants, acceptable use, and subscription terms.",
+  alternates: { canonical: "/terms" },
+  robots: { index: true, follow: true },
+};
 
 export default function TermsPage() {
   return (
