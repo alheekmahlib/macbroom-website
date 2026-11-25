@@ -3,11 +3,11 @@
 import { Sparkles, Trash2, Monitor, AppWindow, HardDrive, Shield, Zap, Disc } from "lucide-react";
 
 const features = [
-  { icon: Sparkles, title: "Smart Clean", description: "One-click scan finds junk files, cache, logs, and temporary data across your entire system.", color: "#4073F2", screenshot: "/screenshots/full-smart.webp" },
-  { icon: HardDrive, title: "Large Files", description: "Find large files that are taking up valuable disk space.", color: "#A855F7", screenshot: "/screenshots/full-large.webp" },
-  { icon: Disc, title: "Disk Analyzer", description: "Visual breakdown of your disk usage. See exactly what's taking up space with an interactive map.", color: "#EF4444", screenshot: "/screenshots/full-disk.webp" },
+  { icon: Sparkles, title: "Smart Clean", description: "One-click scan finds junk files, cache, logs, and temporary data across your entire system.", color: "#4073F2", screenshot: "/screenshots/app-smart.webp" },
+  { icon: HardDrive, title: "Large Files", description: "Find large files that are taking up valuable disk space.", color: "#A855F7", screenshot: "/screenshots/app-large.webp" },
+  { icon: Disc, title: "Disk Analyzer", description: "Visual breakdown of your disk usage. See exactly what's taking up space with an interactive map.", color: "#EF4444", screenshot: "/screenshots/app-disk.webp" },
   { icon: Zap, title: "Free Up RAM", description: "See memory usage by app and reclaim available memory.", color: "#10B981", screenshot: null },
-  { icon: AppWindow, title: "App Uninstaller", description: "Review installed apps and select associated files when removing them.", color: "#F59E0B", screenshot: "/screenshots/full-apps.webp" },
+  { icon: AppWindow, title: "App Uninstaller", description: "Review installed apps and select associated files when removing them.", color: "#F59E0B", screenshot: "/screenshots/app-apps.webp" },
   { icon: Monitor, title: "System Monitor", description: "Real-time CPU, RAM, and network monitoring with beautiful charts and live Menu Bar stats.", color: "#8B5CF6", screenshot: null },
 ];
 

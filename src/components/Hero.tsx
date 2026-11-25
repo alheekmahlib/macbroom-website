@@ -33,7 +33,7 @@ export default function Hero() {
 
         <div className="animate-fade-up relative max-w-4xl mx-auto" style={{ animationDelay: "0.65s" }}>
           <div className="glass-card rounded-2xl p-2 glow-accent-strong">
-            <img src="/screenshots/full-home.webp" alt="MacBroom Home overview; device data hidden" width={1200} height={782} fetchPriority="high" className="block w-full rounded-xl" />
+            <img src="/screenshots/app-home.webp" alt="MacBroom Home overview" width={1200} height={782} fetchPriority="high" className="block w-full rounded-xl" />
           </div>
         </div>
 
