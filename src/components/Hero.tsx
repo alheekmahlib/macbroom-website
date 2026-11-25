@@ -33,15 +33,7 @@ export default function Hero() {
 
         <div className="animate-fade-up relative max-w-4xl mx-auto" style={{ animationDelay: "0.65s" }}>
           <div className="glass-card rounded-2xl p-2 glow-accent-strong">
-            <div className="flex items-center gap-2 px-4 py-3">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              </div>
-              <div className="flex-1 text-center text-xs text-txt-dim">MacBroom</div>
-            </div>
-            <img src="/screenshots/current-large-files.webp" alt="MacBroom Large Files ready to scan" width={1200} height={857} fetchPriority="high" className="block w-full rounded-xl" />
+            <img src="/screenshots/full-home.webp" alt="MacBroom Home overview; device data hidden" width={1200} height={782} fetchPriority="high" className="block w-full rounded-xl" />
           </div>
         </div>
 
