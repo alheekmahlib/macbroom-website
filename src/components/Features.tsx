@@ -34,7 +34,7 @@ export default function Features() {
                 {feature.screenshot && (
                   <div className="flex-1 w-full max-w-xl group">
                     <div className="glass-card rounded-2xl p-2 glow-accent transition-transform duration-300 group-hover:scale-[1.02]">
-                      <img src={feature.screenshot} alt={`MacBroom ${feature.title} interface`} width={1200} height={857} loading="lazy" decoding="async" className="w-full rounded-xl" />
+                      <img src={feature.screenshot} alt={`MacBroom ${feature.title} interface`} width={1200} height={857} loading="lazy" decoding="async" className="block w-full rounded-xl" />
                     </div>
                   </div>
                 )}
