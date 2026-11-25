@@ -41,7 +41,7 @@ export default function Hero() {
               </div>
               <div className="flex-1 text-center text-xs text-txt-dim">MacBroom</div>
             </div>
-            <img src="/screenshots/home-new.png" alt="MacBroom Home Screen" className="w-full rounded-b-xl" />
+            <img src="/screenshots/current-smart.webp" alt="MacBroom Smart Clean ready to scan" width={1200} height={857} fetchPriority="high" className="w-full rounded-b-xl" />
           </div>
         </div>
 

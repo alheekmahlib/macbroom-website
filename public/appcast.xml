@@ -1,14 +1,14 @@
-<?xml version="1.0" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
   <channel>
     <title>MacBroom</title>
     <item>
-      <title>MacBroom 1.3.3</title>
-      <pubDate>Tue, 10 Nov 2026 23:52:15 GMT</pubDate>
-      <sparkle:version>22</sparkle:version>
-      <sparkle:shortVersionString>1.3.3</sparkle:shortVersionString>
+      <title>MacBroom 1.3.4</title>
+      <pubDate>Wed, 25 Nov 2026 03:53:55 +0000</pubDate>
+      <sparkle:version>23</sparkle:version>
+      <sparkle:shortVersionString>1.3.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/MacBroom-1.3.3.zip" sparkle:edSignature="cGy3S56eczziHtDZgOmXQhXoN2cV3OSftUalyxbDsG9YL9U7BcSErpLfqzaXO/eRdm8a3IWoBdzNqg60dfvxDQ==" length="5493195" type="application/octet-stream" />
+      <enclosure url="https://pub-d4edf86c1dda40ea8f2d3a52648ca443.r2.dev/MacBroom-1.3.4.zip" sparkle:edSignature="O5SdH/C2MC6pNTW6r7+r1HbMx3GPD1MNjmN6ZFmsqOjxTAY3/gmRACSkK+gLT7+GwusMBQFYtxMpUArb8+x3CQ==" length="5495561" type="application/octet-stream" />
     </item>
   </channel>
 </rss>

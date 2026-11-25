@@ -95,7 +95,7 @@ export async function submitTicket(
 
   // 2) Formspree email (always attempted).
   try {
-    await fetch(FORMSPREE_ENDPOINT, {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -111,6 +111,7 @@ export async function submitTicket(
         context_json: JSON.stringify(context, null, 2),
       }),
     })
+    if (!response.ok) throw new Error("Formspree submission failed")
   } catch {
     // If Formspree also failed but we have a ticket id, still call it success.
     if (!ticketId) {
@@ -119,7 +120,7 @@ export async function submitTicket(
   }
 
   if (!ticketId) {
-    // Formspree sent (probably) but no DB record — still acceptable.
+    // Formspree accepted the submission even though no DB record was created.
     return {}
   }
   return { ticketId }

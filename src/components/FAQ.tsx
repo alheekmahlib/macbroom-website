@@ -17,11 +17,11 @@ export default function FAQ() {
         <div className="space-y-3 animate-fade-up" style={{ animationDelay: "0.2s" }}>
           {faqs.map((faq, i) => (
             <div key={i} className="rounded-xl border border-white/5 bg-ocean-700/60 overflow-hidden">
-              <button className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors" onClick={() => setOpen(open === i ? null : i)}>
+              <button aria-expanded={open === i} aria-controls={`faq-answer-${i}`} className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors" onClick={() => setOpen(open === i ? null : i)}>
                 <span className="text-sm font-medium text-white pr-4">{faq.q}</span>
                 <ChevronDown size={16} className={`text-txt-dim shrink-0 transition-transform duration-200 ${open === i ? "rotate-180" : ""}`} />
               </button>
-              <div className={`overflow-hidden transition-all duration-300 ease-out ${open === i ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
+              <div id={`faq-answer-${i}`} hidden={open !== i} className="overflow-hidden">
                 <p className="px-5 pb-5 text-sm text-txt-dim leading-relaxed">{faq.a}</p>
               </div>
             </div>

@@ -70,13 +70,13 @@ export default function Navbar() {
               <Link href="/signin" className="px-5 py-2.5 rounded-xl text-sm font-semibold bg-accent hover:bg-accent-hover text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 active:scale-[0.98]">Sign In</Link>
             )}
           </div>
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors">
+          <button onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" className="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors">
             {mobileOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
           </button>
         </div>
       </nav>
       {mobileOpen && (
-        <div className="fixed inset-x-0 top-[72px] z-40 p-4 md:hidden animate-fade-in-scale">
+        <div id="mobile-navigation" className="fixed inset-x-0 top-[72px] z-40 p-4 md:hidden animate-fade-in-scale">
           <div className="glass rounded-2xl p-4 space-y-1">
             {allNavLinks.map((link) => (
               <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)} className="block px-4 py-3 rounded-xl text-sm font-medium text-txt-dim hover:text-white hover:bg-white/5 transition-all">{link.label}</Link>

@@ -31,6 +31,7 @@ export default function ContactPage() {
         subject: undefined,
         message,
         email,
+        extraContext: { name },
       });
 
       if (!error) {
@@ -72,9 +73,7 @@ export default function ContactPage() {
             </div>
           </a>
           <a
-            href="https://github.com/alheekmahlib/macbroom/issues"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact-form"
             className="glass-card rounded-2xl p-5 flex items-center gap-4 hover:bg-white/[0.03] transition-all group"
           >
             <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
@@ -82,7 +81,7 @@ export default function ContactPage() {
             </div>
             <div>
               <p className="text-white font-semibold text-sm group-hover:text-purple-400 transition-colors">Report a Bug</p>
-              <p className="text-txt-dim text-xs">GitHub Issues</p>
+              <p className="text-txt-dim text-xs">Use the contact form</p>
             </div>
           </a>
         </div>
@@ -103,14 +102,15 @@ export default function ContactPage() {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-6">
+          <form id="contact-form" onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-6">
             <h2 className="text-xl font-bold text-white mb-2">Send us a message</h2>
 
             {/* Name & Email */}
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-txt-dim mb-2">Name</label>
+                <label htmlFor="contact-name" className="block text-sm font-medium text-txt-dim mb-2">Name</label>
                 <input
+                  id="contact-name"
                   type="text"
                   required
                   value={name}
@@ -120,8 +120,9 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-txt-dim mb-2">Email</label>
+                <label htmlFor="contact-email" className="block text-sm font-medium text-txt-dim mb-2">Email</label>
                 <input
+                  id="contact-email"
                   type="email"
                   required
                   value={email}
@@ -157,8 +158,9 @@ export default function ContactPage() {
 
             {/* Message */}
             <div>
-              <label className="block text-sm font-medium text-txt-dim mb-2">Message</label>
+              <label htmlFor="contact-message" className="block text-sm font-medium text-txt-dim mb-2">Message</label>
               <textarea
+                id="contact-message"
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}

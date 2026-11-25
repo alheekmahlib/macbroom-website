@@ -16,7 +16,7 @@ const APPCAST_URL = "/appcast.xml";
 export default function DownloadSection() {
   const downloadUrl = DOWNLOAD_URL;
   // Fallback shown until the appcast resolves; also used if parsing fails.
-  const [version, setVersion] = useState("1.3.2");
+  const [version, setVersion] = useState("1.3.4");
 
   useEffect(() => {
     let cancelled = false;
