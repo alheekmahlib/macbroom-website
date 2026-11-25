@@ -4,7 +4,7 @@ import { Sparkles, Trash2, Monitor, AppWindow, HardDrive, Shield, Zap, Disc } fr
 
 const features = [
   { icon: Sparkles, title: "Smart Clean", description: "One-click scan finds junk files, cache, logs, and temporary data across your entire system.", color: "#4073F2", screenshot: "/screenshots/current-smart.webp" },
-  { icon: Disc, title: "Disk Analyzer", description: "Visual breakdown of your disk usage. See exactly what's taking up space with an interactive map.", color: "#EF4444", screenshot: null },
+  { icon: Disc, title: "Disk Analyzer", description: "Visual breakdown of your disk usage. See exactly what's taking up space with an interactive map.", color: "#EF4444", screenshot: "/screenshots/current-disk-locations.webp" },
   { icon: Zap, title: "Free Up RAM", description: "See memory usage by app and reclaim available memory.", color: "#10B981", screenshot: null },
   { icon: AppWindow, title: "App Uninstaller", description: "Review installed apps and select associated files when removing them.", color: "#F59E0B", screenshot: "/screenshots/current-apps.webp" },
   { icon: Monitor, title: "System Monitor", description: "Real-time CPU, RAM, and network monitoring with beautiful charts and live Menu Bar stats.", color: "#8B5CF6", screenshot: null },
@@ -34,7 +34,7 @@ export default function Features() {
                 {feature.screenshot && (
                   <div className="flex-1 w-full max-w-xl group">
                     <div className="glass-card rounded-2xl p-2 glow-accent transition-transform duration-300 group-hover:scale-[1.02]">
-                      <img src={feature.screenshot} alt={`MacBroom ${feature.title} interface`} width={1200} height={857} loading="lazy" decoding="async" className="block w-full rounded-xl" />
+                      <img src={feature.screenshot} alt={`MacBroom ${feature.title} interface`} width={1200} height={feature.title === "Disk Analyzer" ? 312 : 857} loading="lazy" decoding="async" className="block w-full rounded-xl" />
                     </div>
                   </div>
                 )}

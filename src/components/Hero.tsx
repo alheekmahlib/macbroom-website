@@ -41,7 +41,7 @@ export default function Hero() {
               </div>
               <div className="flex-1 text-center text-xs text-txt-dim">MacBroom</div>
             </div>
-            <img src="/screenshots/current-smart.webp" alt="MacBroom Smart Clean ready to scan" width={1200} height={857} fetchPriority="high" className="block w-full rounded-xl" />
+            <img src="/screenshots/current-large-files.webp" alt="MacBroom Large Files ready to scan" width={1200} height={857} fetchPriority="high" className="block w-full rounded-xl" />
           </div>
         </div>
 
